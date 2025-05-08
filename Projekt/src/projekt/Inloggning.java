@@ -3,18 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projekt;
-
+import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author jakobolofsson
  */
 public class Inloggning extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form Inloggning
      */
-    public Inloggning() {
+    public Inloggning(InfDB idb) {
+        this.idb = idb;
         initComponents();
+        lblFelmeddelande.setVisible(false);
     }
 
     /**
@@ -30,7 +33,7 @@ public class Inloggning extends javax.swing.JFrame {
         lblLosenord = new javax.swing.JLabel();
         tfEPost = new javax.swing.JTextField();
         tfLosenord = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblFelmeddelande = new javax.swing.JLabel();
         btnLoggaIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -39,7 +42,14 @@ public class Inloggning extends javax.swing.JFrame {
 
         lblLosenord.setText("Lösenord");
 
-        jLabel3.setText("jLabel3");
+        tfEPost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfEPostActionPerformed(evt);
+            }
+        });
+
+        lblFelmeddelande.setForeground(new java.awt.Color(255, 0, 0));
+        lblFelmeddelande.setText("Felaktigt meddelande eller lösenord");
 
         btnLoggaIn.setText("Logga in");
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
@@ -53,17 +63,25 @@ public class Inloggning extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(lblLosenord)
-                    .addComponent(lblEPost))
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLoggaIn)
-                    .addComponent(tfEPost, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                    .addComponent(tfLosenord))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblLosenord)
+                                .addGap(30, 30, 30)
+                                .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblEPost)
+                                .addGap(45, 45, 45)
+                                .addComponent(tfEPost, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(lblFelmeddelande, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(btnLoggaIn)))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,19 +94,36 @@ public class Inloggning extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLosenord)
                     .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblFelmeddelande, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLoggaIn)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
-        // TODO add your handling code here:
+String ePost = tfEPost.getText();
+String losenord = tfLosenord.getText();
+
+try{
+    
+   String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '"+ePost+"'";
+   System.out.println(sqlFraga);
+   String rattLosenord=idb.fetchSingle(sqlFraga);
+   if (rattLosenord.equals(losenord)){}
+   else{
+       lblFelmeddelande.setVisible(true);
+   }
+}
+catch(Exception ex){}
     }//GEN-LAST:event_btnLoggaInActionPerformed
+
+    private void tfEPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEPostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEPostActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,15 +155,15 @@ public class Inloggning extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inloggning().setVisible(true);
+                //new Inloggning(idb).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaIn;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblEPost;
+    private javax.swing.JLabel lblFelmeddelande;
     private javax.swing.JLabel lblLosenord;
     private javax.swing.JTextField tfEPost;
     private javax.swing.JTextField tfLosenord;
