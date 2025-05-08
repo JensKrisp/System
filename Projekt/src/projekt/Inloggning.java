@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projekt;
+import ljud.LjudSystem;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -120,6 +121,7 @@ try{
    
    else{
        lblFelmeddelande.setVisible(true);
+       new LjudSystem().spelaLjud("ljud.waw");
    }
 }
 catch(InfException ex){
