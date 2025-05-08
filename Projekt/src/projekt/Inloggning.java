@@ -113,12 +113,19 @@ try{
    String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '"+ePost+"'";
    System.out.println(sqlFraga);
    String rattLosenord=idb.fetchSingle(sqlFraga);
-   if (rattLosenord.equals(losenord)){}
+   if (losenord.equals(rattLosenord)){
+       new Meny(idb,ePost).setVisible(true);
+   
+   }
+   
    else{
        lblFelmeddelande.setVisible(true);
    }
 }
-catch(Exception ex){}
+catch(InfException ex){
+    System.out.println(ex.getMessage());
+
+}
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
     private void tfEPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEPostActionPerformed
