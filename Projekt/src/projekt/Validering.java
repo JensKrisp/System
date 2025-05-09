@@ -5,7 +5,7 @@
 package projekt;
 
 import javax.swing.JTextField;
-
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,12 +20,39 @@ public class Validering {
     }
    
     public static boolean ejTomtFalt(JTextField faltAttKontrollera) {
-    if (faltAttKontrollera.getText().isEmpty()) {
-        return false;
+    
+    boolean resultat = true;
+    
+        if (faltAttKontrollera.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Inmatnignsrutan är tom!");
+         resultat = false;
+         faltAttKontrollera.requestFocus();
+        }
+    
+    return resultat;
     }
-    return true;
-}
 
+    public static boolean isHeltal(JTextField faltAttKontrollera){
+    
+    boolean resultat = true;
+        // Här görs en try och catch, inte det bästa enligt Johan. Men han tycker att det är pedagogiskt.
+        
+        try {
+        String inStrang = faltAttKontrollera.getText();
+        Integer.parseInt(inStrang);
+        // Skicka tillbaka markören till rutan
+        faltAttKontrollera.requestFocus();
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Ange heltal!");
+            resultat = false;
+        }
+    return resultat;
+    }
+    
+    
+    
+    
     public static boolean isValidLosenord(String losenord) {
         //  Validering för lösenord: det ska vara minst 10 tecken långt
         return losenord.length() >= 10;
