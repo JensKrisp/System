@@ -12,7 +12,7 @@ import java.io.*;
 public class LjudSystem {
     public void spelaLjud(String ljudetsNamn) {
         try {
-            // Load the file from the classpath (e.g., sounds/click.wav)
+            
             InputStream ljudKalla = getClass().getResourceAsStream("/ljud/" + ljudetsNamn);
             if (ljudKalla == null) {
                 System.out.println("ljudetfinnsinte");

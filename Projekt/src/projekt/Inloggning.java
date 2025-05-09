@@ -77,12 +77,12 @@ private InfDB idb;
                                 .addGap(45, 45, 45)
                                 .addComponent(tfEPost, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(lblFelmeddelande, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(btnLoggaIn)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                        .addComponent(btnLoggaIn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(lblFelmeddelande, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +115,15 @@ try{
    System.out.println(sqlFraga);
    String rattLosenord=idb.fetchSingle(sqlFraga);
    if (losenord.equals(rattLosenord)){
-       new Meny(idb,ePost).setVisible(true);
+       
+       this.setVisible(false);
+       String sqlFragaBefattning = "SELECT epost FROM anstalld join admin on anstalld.aid = admin.aid where epost ='"+ePost+"'";
+        if(sqlFragaBefattning.equals(ePost)){
+            new MenyAdmin(idb,ePost).setVisible(true);
+       }
+        else{
+            new MenyHandlaggare(idb,ePost).setVisible(true);
+       }
    
    }
    

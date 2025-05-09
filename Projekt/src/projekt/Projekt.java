@@ -17,6 +17,7 @@ import oru.inf.InfException;
 public class Projekt {
 
 private InfDB idb;
+
  
 
 
@@ -28,6 +29,7 @@ private InfDB idb;
         try{
         idb = new InfDB("sdgsweden","3306","dbAdmin2024","dbAdmin2024PW");
         new Inloggning(idb).setVisible(true);
+               
         System.out.println("funkar");
     }
         catch(InfException infex){System.out.println(infex.getMessage());
