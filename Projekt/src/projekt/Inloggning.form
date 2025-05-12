@@ -98,7 +98,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Felaktigt meddelande eller l&#xf6;senord"/>
+        <Property name="text" type="java.lang.String" value="Felaktigt epost eller l&#xf6;senord"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLoggaIn">
