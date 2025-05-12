@@ -118,7 +118,10 @@ try{
        
        this.setVisible(false);
        String sqlFragaBefattning = "SELECT epost FROM anstalld join admin on anstalld.aid = admin.aid where epost ='"+ePost+"'";
-        if(sqlFragaBefattning.equals(ePost)){
+       System.out.println(sqlFragaBefattning);
+       String befattning = idb.fetchSingle(sqlFragaBefattning);
+       
+        if(ePost.equals(befattning)){
             new MenyAdmin(idb,ePost).setVisible(true);
        }
         else{
