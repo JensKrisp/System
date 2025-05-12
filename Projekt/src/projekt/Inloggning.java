@@ -50,7 +50,7 @@ private InfDB idb;
         });
 
         lblFelmeddelande.setForeground(new java.awt.Color(255, 0, 0));
-        lblFelmeddelande.setText("Felaktigt meddelande eller lösenord");
+        lblFelmeddelande.setText("Felaktigt epost eller lösenord");
 
         btnLoggaIn.setText("Logga in");
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {

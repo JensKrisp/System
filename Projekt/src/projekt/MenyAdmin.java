@@ -40,11 +40,12 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblInloggadAnvandare = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        paneHuvudPanelAdmin = new javax.swing.JTabbedPane();
+        panelMinaProjekt = new javax.swing.JPanel();
+        panelLander = new javax.swing.JPanel();
+        panelPartners = new javax.swing.JPanel();
+        panelAvdelningar = new javax.swing.JPanel();
+        panelLaggTillAnvandare = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,40 +62,70 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         lblInloggadAnvandare.setText("jLabel1");
 
-        jButton1.setText("Lägg till användare");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout panelMinaProjektLayout = new javax.swing.GroupLayout(panelMinaProjekt);
+        panelMinaProjekt.setLayout(panelMinaProjektLayout);
+        panelMinaProjektLayout.setHorizontalGroup(
+            panelMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 631, Short.MAX_VALUE)
+        );
+        panelMinaProjektLayout.setVerticalGroup(
+            panelMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 239, Short.MAX_VALUE)
+        );
 
-        jButton2.setText("Mina projekt");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        paneHuvudPanelAdmin.addTab("Mina projekt", panelMinaProjekt);
 
-        jButton3.setText("Avdelningar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout panelLanderLayout = new javax.swing.GroupLayout(panelLander);
+        panelLander.setLayout(panelLanderLayout);
+        panelLanderLayout.setHorizontalGroup(
+            panelLanderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 631, Short.MAX_VALUE)
+        );
+        panelLanderLayout.setVerticalGroup(
+            panelLanderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 239, Short.MAX_VALUE)
+        );
 
-        jButton4.setText("Partners");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        paneHuvudPanelAdmin.addTab("Länder", panelLander);
 
-        jButton5.setText("Länder");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout panelPartnersLayout = new javax.swing.GroupLayout(panelPartners);
+        panelPartners.setLayout(panelPartnersLayout);
+        panelPartnersLayout.setHorizontalGroup(
+            panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 631, Short.MAX_VALUE)
+        );
+        panelPartnersLayout.setVerticalGroup(
+            panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 239, Short.MAX_VALUE)
+        );
+
+        paneHuvudPanelAdmin.addTab("Partners", panelPartners);
+
+        javax.swing.GroupLayout panelAvdelningarLayout = new javax.swing.GroupLayout(panelAvdelningar);
+        panelAvdelningar.setLayout(panelAvdelningarLayout);
+        panelAvdelningarLayout.setHorizontalGroup(
+            panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 631, Short.MAX_VALUE)
+        );
+        panelAvdelningarLayout.setVerticalGroup(
+            panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 239, Short.MAX_VALUE)
+        );
+
+        paneHuvudPanelAdmin.addTab("Avdelningar", panelAvdelningar);
+
+        javax.swing.GroupLayout panelLaggTillAnvandareLayout = new javax.swing.GroupLayout(panelLaggTillAnvandare);
+        panelLaggTillAnvandare.setLayout(panelLaggTillAnvandareLayout);
+        panelLaggTillAnvandareLayout.setHorizontalGroup(
+            panelLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 631, Short.MAX_VALUE)
+        );
+        panelLaggTillAnvandareLayout.setVerticalGroup(
+            panelLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 239, Short.MAX_VALUE)
+        );
+
+        paneHuvudPanelAdmin.addTab("Lägg till användare", panelLaggTillAnvandare);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,58 +134,23 @@ public class MenyAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 491, Short.MAX_VALUE)))
+                        .addGap(0, 572, Short.MAX_VALUE)
+                        .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(paneHuvudPanelAdmin))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addComponent(paneHuvudPanelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,13 +188,14 @@ public class MenyAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JTabbedPane paneHuvudPanelAdmin;
+    private javax.swing.JPanel panelAvdelningar;
+    private javax.swing.JPanel panelLaggTillAnvandare;
+    private javax.swing.JPanel panelLander;
+    private javax.swing.JPanel panelMinaProjekt;
+    private javax.swing.JPanel panelPartners;
     // End of variables declaration//GEN-END:variables
 
 }
