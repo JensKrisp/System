@@ -40,11 +40,12 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblInloggadAnvandare = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        menyAdminHuvudPanel = new javax.swing.JTabbedPane();
+        panelProjekt = new javax.swing.JPanel();
+        panelLänder = new javax.swing.JPanel();
+        panelPartners = new javax.swing.JPanel();
+        panelAvdelningar = new javax.swing.JPanel();
+        panelAnvandare = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,71 +62,90 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         lblInloggadAnvandare.setText("jLabel1");
 
-        jButton1.setText("Hantera Användare");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout panelProjektLayout = new javax.swing.GroupLayout(panelProjekt);
+        panelProjekt.setLayout(panelProjektLayout);
+        panelProjektLayout.setHorizontalGroup(
+            panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 508, Short.MAX_VALUE)
+        );
+        panelProjektLayout.setVerticalGroup(
+            panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
 
-        jButton2.setText("Mina projekt");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        menyAdminHuvudPanel.addTab("Projekt", panelProjekt);
 
-        jButton3.setText("Avdelningar");
+        javax.swing.GroupLayout panelLänderLayout = new javax.swing.GroupLayout(panelLänder);
+        panelLänder.setLayout(panelLänderLayout);
+        panelLänderLayout.setHorizontalGroup(
+            panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 508, Short.MAX_VALUE)
+        );
+        panelLänderLayout.setVerticalGroup(
+            panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
 
-        jButton4.setText("Partners");
+        menyAdminHuvudPanel.addTab("Länder", panelLänder);
 
-        jButton5.setText("Länder");
+        javax.swing.GroupLayout panelPartnersLayout = new javax.swing.GroupLayout(panelPartners);
+        panelPartners.setLayout(panelPartnersLayout);
+        panelPartnersLayout.setHorizontalGroup(
+            panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 508, Short.MAX_VALUE)
+        );
+        panelPartnersLayout.setVerticalGroup(
+            panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
+
+        menyAdminHuvudPanel.addTab("Partners", panelPartners);
+
+        javax.swing.GroupLayout panelAvdelningarLayout = new javax.swing.GroupLayout(panelAvdelningar);
+        panelAvdelningar.setLayout(panelAvdelningarLayout);
+        panelAvdelningarLayout.setHorizontalGroup(
+            panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 508, Short.MAX_VALUE)
+        );
+        panelAvdelningarLayout.setVerticalGroup(
+            panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
+
+        menyAdminHuvudPanel.addTab("Avdelningar", panelAvdelningar);
+
+        javax.swing.GroupLayout panelAnvandareLayout = new javax.swing.GroupLayout(panelAnvandare);
+        panelAnvandare.setLayout(panelAnvandareLayout);
+        panelAnvandareLayout.setHorizontalGroup(
+            panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 508, Short.MAX_VALUE)
+        );
+        panelAnvandareLayout.setVerticalGroup(
+            panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
+
+        menyAdminHuvudPanel.addTab("Användare", panelAnvandare);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 432, Short.MAX_VALUE)
-                .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(menyAdminHuvudPanel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menyAdminHuvudPanel)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addComponent(lblInloggadAnvandare)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,13 +183,14 @@ public class MenyAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JTabbedPane menyAdminHuvudPanel;
+    private javax.swing.JPanel panelAnvandare;
+    private javax.swing.JPanel panelAvdelningar;
+    private javax.swing.JPanel panelLänder;
+    private javax.swing.JPanel panelPartners;
+    private javax.swing.JPanel panelProjekt;
     // End of variables declaration//GEN-END:variables
 
 }
