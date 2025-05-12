@@ -73,7 +73,7 @@ public class MenyAdmin extends javax.swing.JFrame {
             .addGap(0, 341, Short.MAX_VALUE)
         );
 
-        paneHuvudPanelAdmin.addTab("Mina projekt", panelMinaProjekt);
+        paneHuvudPanelAdmin.addTab("Projekt", panelMinaProjekt);
 
         javax.swing.GroupLayout panelLanderLayout = new javax.swing.GroupLayout(panelLander);
         panelLander.setLayout(panelLanderLayout);
@@ -125,14 +125,14 @@ public class MenyAdmin extends javax.swing.JFrame {
             .addGap(0, 341, Short.MAX_VALUE)
         );
 
-        paneHuvudPanelAdmin.addTab("Lägg till användare", panelLaggTillAnvandare);
+        paneHuvudPanelAdmin.addTab("Användare", panelLaggTillAnvandare);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(paneHuvudPanelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(paneHuvudPanelAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
