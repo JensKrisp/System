@@ -66,11 +66,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelMinaProjekt.setLayout(panelMinaProjektLayout);
         panelMinaProjektLayout.setHorizontalGroup(
             panelMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
         );
         panelMinaProjektLayout.setVerticalGroup(
             panelMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 341, Short.MAX_VALUE)
         );
 
         paneHuvudPanelAdmin.addTab("Mina projekt", panelMinaProjekt);
@@ -79,11 +79,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelLander.setLayout(panelLanderLayout);
         panelLanderLayout.setHorizontalGroup(
             panelLanderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
         );
         panelLanderLayout.setVerticalGroup(
             panelLanderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 341, Short.MAX_VALUE)
         );
 
         paneHuvudPanelAdmin.addTab("Länder", panelLander);
@@ -92,11 +92,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelPartners.setLayout(panelPartnersLayout);
         panelPartnersLayout.setHorizontalGroup(
             panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
         );
         panelPartnersLayout.setVerticalGroup(
             panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 341, Short.MAX_VALUE)
         );
 
         paneHuvudPanelAdmin.addTab("Partners", panelPartners);
@@ -105,11 +105,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelAvdelningar.setLayout(panelAvdelningarLayout);
         panelAvdelningarLayout.setHorizontalGroup(
             panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
         );
         panelAvdelningarLayout.setVerticalGroup(
             panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 341, Short.MAX_VALUE)
         );
 
         paneHuvudPanelAdmin.addTab("Avdelningar", panelAvdelningar);
@@ -118,11 +118,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelLaggTillAnvandare.setLayout(panelLaggTillAnvandareLayout);
         panelLaggTillAnvandareLayout.setHorizontalGroup(
             panelLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
         );
         panelLaggTillAnvandareLayout.setVerticalGroup(
             panelLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 341, Short.MAX_VALUE)
         );
 
         paneHuvudPanelAdmin.addTab("Lägg till användare", panelLaggTillAnvandare);
@@ -132,21 +132,19 @@ public class MenyAdmin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 572, Short.MAX_VALUE)
-                        .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(paneHuvudPanelAdmin))
+                .addComponent(paneHuvudPanelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneHuvudPanelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(paneHuvudPanelAdmin))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblInloggadAnvandare)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
