@@ -74,7 +74,11 @@ try{
         lblKollegorListTitel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaProjektAvdelningHandlaggare = new javax.swing.JList<>();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        lblProjektAvdelning = new javax.swing.JLabel();
+        btnVisaPagaende = new javax.swing.JButton();
+        btnVisaPlanerade = new javax.swing.JButton();
+        btnVisaAvslutade = new javax.swing.JButton();
+        btnVisaAlla = new javax.swing.JButton();
         tabMinaUppgifter = new javax.swing.JTabbedPane();
         tabHallbarhetsMal = new javax.swing.JTabbedPane();
 
@@ -109,7 +113,35 @@ try{
         });
         jScrollPane1.setViewportView(listaProjektAvdelningHandlaggare);
 
-        jToggleButton1.setText("jToggleButton1");
+        lblProjektAvdelning.setText("Projekt i avdelningen");
+
+        btnVisaPagaende.setText("Visa Pågående Projekt");
+        btnVisaPagaende.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisaPagaendeActionPerformed(evt);
+            }
+        });
+
+        btnVisaPlanerade.setText("Visa Planerade Projekt");
+        btnVisaPlanerade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisaPlaneradeActionPerformed(evt);
+            }
+        });
+
+        btnVisaAvslutade.setText("Visa Avslutade Projekt");
+        btnVisaAvslutade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisaAvslutadeActionPerformed(evt);
+            }
+        });
+
+        btnVisaAlla.setText("Visa Alla Projekt");
+        btnVisaAlla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisaAllaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabMinAvdelningLayout = new javax.swing.GroupLayout(tabMinAvdelning);
         tabMinAvdelning.setLayout(tabMinAvdelningLayout);
@@ -118,27 +150,42 @@ try{
             .addGroup(tabMinAvdelningLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tabMinAvdelningLayout.createSequentialGroup()
-                        .addComponent(AnstalldaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton1))
+                    .addComponent(AnstalldaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tabMinAvdelningLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(lblKollegorListTitel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(lblProjektAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVisaPagaende)
+                    .addComponent(btnVisaPlanerade)
+                    .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnVisaAlla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVisaAvslutade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         tabMinAvdelningLayout.setVerticalGroup(
             tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabMinAvdelningLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(lblKollegorListTitel)
+                .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblKollegorListTitel)
+                    .addComponent(lblProjektAvdelning))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AnstalldaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1))
+                    .addGroup(tabMinAvdelningLayout.createSequentialGroup()
+                        .addComponent(btnVisaPagaende)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisaPlanerade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisaAvslutade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisaAlla)))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
 
@@ -159,6 +206,46 @@ try{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVisaPagaendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaPagaendeActionPerformed
+ try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Pågående' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
+       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+        for(String a : anstallda){
+                overforingsLista.addElement(a);
+        System.out.println(a);}
+        listaProjektAvdelningHandlaggare.setModel(overforingsLista);
+    }catch(InfException ex){
+        System.out.println(ex.getMessage());
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisaPagaendeActionPerformed
+
+    private void btnVisaPlaneradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaPlaneradeActionPerformed
+        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Planerat' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
+       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+        for(String a : anstallda){
+                overforingsLista.addElement(a);
+        System.out.println(a);}
+        listaProjektAvdelningHandlaggare.setModel(overforingsLista);
+    }catch(InfException ex){
+        System.out.println(ex.getMessage());
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisaPlaneradeActionPerformed
+
+    private void btnVisaAvslutadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAvslutadeActionPerformed
+ try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Avslutat' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
+       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+        for(String a : anstallda){
+                overforingsLista.addElement(a);
+        System.out.println(a);}
+        listaProjektAvdelningHandlaggare.setModel(overforingsLista);
+    }catch(InfException ex){
+        System.out.println(ex.getMessage());
+    }        // TODO add your handling code here:        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisaAvslutadeActionPerformed
+
+    private void btnVisaAllaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAllaActionPerformed
+listaOverProjekt();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisaAllaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,10 +284,14 @@ try{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane AnstalldaScrollPane;
+    private javax.swing.JButton btnVisaAlla;
+    private javax.swing.JButton btnVisaAvslutade;
+    private javax.swing.JButton btnVisaPagaende;
+    private javax.swing.JButton btnVisaPlanerade;
     private javax.swing.JTabbedPane huvudPanelHandlaggare;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblKollegorListTitel;
+    private javax.swing.JLabel lblProjektAvdelning;
     private javax.swing.JList<String> listaAnstallda;
     private javax.swing.JList<String> listaProjektAvdelningHandlaggare;
     private javax.swing.JTabbedPane tabHallbarhetsMal;
