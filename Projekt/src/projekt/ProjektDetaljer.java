@@ -21,6 +21,18 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         this.idb = idb;
         this.aktuelltProjekt = aktuelltProjekt;
         initComponents();
+        hamtaLabelNamn();
+        hamtaProjektNamn();
+        hamtaPid();
+        hamtaBeskrivning();
+        hamtaStartdatum();
+        hamtaSlutdatum();
+        hamtaKostnad();
+        hamtaStatus();
+        hamtaPrioritet();
+        hamtaProjektchef();
+        hamtaLand();
+        
     }
 
     /**
@@ -38,7 +50,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         tfStartdatum = new javax.swing.JTextField();
         tfSlutdatum = new javax.swing.JTextField();
         tfKostnad = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblAktuelltProjektNamn = new javax.swing.JLabel();
         tfStatus = new javax.swing.JTextField();
         tfPrioritet = new javax.swing.JTextField();
         tfProjektchef = new javax.swing.JTextField();
@@ -60,6 +72,11 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         tfPid.setText("jTextField1");
 
         tfProjektnamn.setText("jTextField2");
+        tfProjektnamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProjektnamnActionPerformed(evt);
+            }
+        });
 
         tfBeskrivning.setText("jTextField3");
 
@@ -69,7 +86,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
 
         tfKostnad.setText("jTextField6");
 
-        jLabel1.setText("jLabel1");
+        lblAktuelltProjektNamn.setText("jLabel1");
 
         tfStatus.setText("jTextField7");
 
@@ -80,26 +97,31 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         tfLand.setText("jTextField10");
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        lblPid.setText("jLabel2");
+        lblPid.setText("Projekt-ID:");
 
-        lblProjektnamn.setText("jLabel2");
+        lblProjektnamn.setText("Namn:");
 
-        lblBeskrivning.setText("jLabel2");
+        lblBeskrivning.setText("Beskrivning:");
 
-        lblStartdatum.setText("jLabel2");
+        lblStartdatum.setText("Startdatum:");
 
-        lblSlutdatum.setText("jLabel2");
+        lblSlutdatum.setText("Slutdatum:");
 
-        lblKostnad.setText("jLabel2");
+        lblKostnad.setText("Kostnad:");
 
-        lblStatus.setText("jLabel2");
+        lblStatus.setText("Status:");
 
-        lblPrioritet.setText("jLabel2");
+        lblPrioritet.setText("Prioritet:");
 
-        lblProjektChef.setText("jLabel2");
+        lblProjektChef.setText("Projektchef:");
 
-        lblLand.setText("jLabel2");
+        lblLand.setText("Land:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,10 +129,10 @@ public class ProjektDetaljer extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAktuelltProjektNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,12 +164,13 @@ public class ProjektDetaljer extends javax.swing.JFrame {
                             .addComponent(lblProjektChef)
                             .addComponent(lblLand))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfProjektchef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfPrioritet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfKostnad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfProjektchef)
+                            .addComponent(tfPrioritet)
+                            .addComponent(tfStatus)
+                            .addComponent(tfKostnad)
+                            .addComponent(tfLand, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addGap(7, 7, 7))
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(54, 54, 54))
         );
@@ -155,7 +178,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblAktuelltProjektNamn)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfPid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,6 +217,126 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tfProjektnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProjektnamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProjektnamnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void hamtaLabelNamn(){
+        String sqlFraga = "SELECT projektnamn FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        lblAktuelltProjektNamn.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+        
+    public void hamtaProjektNamn(){
+        String sqlFraga = "SELECT projektnamn FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfProjektnamn.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+    
+    public void hamtaPid(){
+        String sqlFraga = "SELECT pid FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfPid.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+    
+     public void hamtaBeskrivning(){
+        String sqlFraga = "SELECT beskrivning FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfBeskrivning.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+     
+     public void hamtaStartdatum(){
+        String sqlFraga = "SELECT startdatum FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfStartdatum.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+    
+    public void hamtaSlutdatum(){
+        String sqlFraga = "SELECT slutdatum FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfSlutdatum.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+    
+    public void hamtaKostnad(){
+        String sqlFraga = "SELECT kostnad FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfKostnad.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+    
+    public void hamtaStatus(){
+        String sqlFraga = "SELECT status FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfStatus.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+     
+    public void hamtaPrioritet(){
+        String sqlFraga = "SELECT prioritet FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfPrioritet.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+    
+    public void hamtaProjektchef(){
+        String sqlFraga = "SELECT projektchef FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfProjektchef.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+    
+    public void hamtaLand(){
+        String sqlFraga = "SELECT land FROM projekt WHERE pid = "+aktuelltProjekt;
+        try{
+        String projektNamn = idb.fetchSingle(sqlFraga);
+        tfLand.setText(projektNamn);
+        }
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+    } }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -231,7 +374,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblAktuelltProjektNamn;
     private javax.swing.JLabel lblBeskrivning;
     private javax.swing.JLabel lblKostnad;
     private javax.swing.JLabel lblLand;
