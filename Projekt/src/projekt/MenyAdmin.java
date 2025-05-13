@@ -5,6 +5,8 @@
 package projekt;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author elisl
@@ -22,7 +24,7 @@ public class MenyAdmin extends javax.swing.JFrame {
         this.inloggadAnvandare = inloggadAnvandare;
         initComponents();
         lblInloggadAnvandare.setText(inloggadAnvandare);
-
+        listaOverProjekt();
        
                 
                 
@@ -42,6 +44,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         lblInloggadAnvandare = new javax.swing.JLabel();
         menyAdminHuvudPanel = new javax.swing.JTabbedPane();
         panelProjekt = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaProjekt = new javax.swing.JList<>();
+        tfProjektID = new javax.swing.JTextField();
+        btnProjektSok = new javax.swing.JButton();
+        lblAllaProjekt = new javax.swing.JLabel();
         panelLänder = new javax.swing.JPanel();
         panelPartners = new javax.swing.JPanel();
         panelAvdelningar = new javax.swing.JPanel();
@@ -62,15 +69,54 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         lblInloggadAnvandare.setText("jLabel1");
 
+        listaProjekt.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listaProjekt);
+
+        tfProjektID.setText("Projekt ID");
+        tfProjektID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProjektIDActionPerformed(evt);
+            }
+        });
+
+        btnProjektSok.setText("Sök");
+        btnProjektSok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProjektSokActionPerformed(evt);
+            }
+        });
+
+        lblAllaProjekt.setText("Alla projekt:");
+
         javax.swing.GroupLayout panelProjektLayout = new javax.swing.GroupLayout(panelProjekt);
         panelProjekt.setLayout(panelProjektLayout);
         panelProjektLayout.setHorizontalGroup(
             panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGroup(panelProjektLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(tfProjektID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAllaProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(btnProjektSok, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
         panelProjektLayout.setVerticalGroup(
             panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(panelProjektLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(lblAllaProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfProjektID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnProjektSok)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Projekt", panelProjekt);
@@ -79,11 +125,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelLänder.setLayout(panelLänderLayout);
         panelLänderLayout.setHorizontalGroup(
             panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
         );
         panelLänderLayout.setVerticalGroup(
             panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
 
         menyAdminHuvudPanel.addTab("Länder", panelLänder);
@@ -92,11 +138,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelPartners.setLayout(panelPartnersLayout);
         panelPartnersLayout.setHorizontalGroup(
             panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
         );
         panelPartnersLayout.setVerticalGroup(
             panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
 
         menyAdminHuvudPanel.addTab("Partners", panelPartners);
@@ -105,11 +151,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelAvdelningar.setLayout(panelAvdelningarLayout);
         panelAvdelningarLayout.setHorizontalGroup(
             panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
         );
         panelAvdelningarLayout.setVerticalGroup(
             panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
 
         menyAdminHuvudPanel.addTab("Avdelningar", panelAvdelningar);
@@ -118,11 +164,11 @@ public class MenyAdmin extends javax.swing.JFrame {
         panelAnvandare.setLayout(panelAnvandareLayout);
         panelAnvandareLayout.setHorizontalGroup(
             panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
         );
         panelAnvandareLayout.setVerticalGroup(
             panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
 
         menyAdminHuvudPanel.addTab("Användare", panelAnvandare);
@@ -132,8 +178,8 @@ public class MenyAdmin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(menyAdminHuvudPanel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menyAdminHuvudPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -146,6 +192,42 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+ public void listaOverProjekt(){
+       try{ ArrayList<String> allaProjekt = idb.fetchColumn("SELECT concat(projektnamn, ', ',pid) from projekt");
+       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+        for(String a : allaProjekt){
+                overforingsLista.addElement(a);
+        System.out.println(a);}
+        listaProjekt.setModel(overforingsLista);
+    }catch(InfException ex){
+        System.out.println(ex.getMessage());
+    }}
+    
+    
+    
+    private void tfProjektIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProjektIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProjektIDActionPerformed
+
+    private void btnProjektSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektSokActionPerformed
+        // TODO add your handling code here:
+        String projektID = tfProjektID.getText();
+        
+        try {
+            String sqlFraga = "SELECT pid FROM projekt WHERE pid = "+ projektID;
+            System.out.println(sqlFraga);
+            String pidFinns = idb.fetchSingle(sqlFraga);
+            if(projektID.equals(pidFinns)){
+                
+            new ProjektDetaljer(idb,pidFinns).setVisible(true);
+            }
+        }
+        
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+
+        }
+    }//GEN-LAST:event_btnProjektSokActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,14 +265,19 @@ public class MenyAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnProjektSok;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAllaProjekt;
     private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JList<String> listaProjekt;
     private javax.swing.JTabbedPane menyAdminHuvudPanel;
     private javax.swing.JPanel panelAnvandare;
     private javax.swing.JPanel panelAvdelningar;
     private javax.swing.JPanel panelLänder;
     private javax.swing.JPanel panelPartners;
     private javax.swing.JPanel panelProjekt;
+    private javax.swing.JTextField tfProjektID;
     // End of variables declaration//GEN-END:variables
 
 }
