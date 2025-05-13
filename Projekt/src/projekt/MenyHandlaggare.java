@@ -29,7 +29,10 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         }
         initComponents();
         listaOverKollegor();
-        listaOverProjekt();
+        listaOverProjektAvdelning();
+        listaMinaProjekt();
+        listaProjektJagLeder();
+        listaPartnersTillMinaProjekt();
     }
     public void listaOverKollegor(){
 try{
@@ -42,7 +45,7 @@ try{
     System.out.println(ex.getMessage());
 }
     }
-    public void listaOverProjekt(){
+    public void listaOverProjektAvdelning(){
        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
         for(String a : anstallda){
@@ -68,6 +71,15 @@ try{
 
         huvudPanelHandlaggare = new javax.swing.JTabbedPane();
         tabMinaProjekt = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listMinaProjekt = new javax.swing.JList<>();
+        lblMinaProjekt = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listProjektDuLeder = new javax.swing.JList<>();
+        lblProjektDuLeder = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listaPartnersIDinaProjekt = new javax.swing.JList<>();
+        lblPartnersTillDinaProjekt = new javax.swing.JLabel();
         tabMinAvdelning = new javax.swing.JPanel();
         AnstalldaScrollPane = new javax.swing.JScrollPane();
         listaAnstallda = new javax.swing.JList<>();
@@ -84,15 +96,68 @@ try{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        listMinaProjekt.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(listMinaProjekt);
+
+        lblMinaProjekt.setText("Dina projekt");
+
+        listProjektDuLeder.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(listProjektDuLeder);
+
+        lblProjektDuLeder.setText("Projekt du leder");
+
+        listaPartnersIDinaProjekt.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(listaPartnersIDinaProjekt);
+
+        lblPartnersTillDinaProjekt.setText("Partners till dina projekt");
+
         javax.swing.GroupLayout tabMinaProjektLayout = new javax.swing.GroupLayout(tabMinaProjekt);
         tabMinaProjekt.setLayout(tabMinaProjektLayout);
         tabMinaProjektLayout.setHorizontalGroup(
             tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                        .addComponent(lblMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblProjektDuLeder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPartnersTillDinaProjekt)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         tabMinaProjektLayout.setVerticalGroup(
             tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 302, Short.MAX_VALUE)
+            .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMinaProjekt)
+                    .addComponent(lblProjektDuLeder)
+                    .addComponent(lblPartnersTillDinaProjekt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         huvudPanelHandlaggare.addTab("Mina Projekt", tabMinaProjekt);
@@ -244,9 +309,43 @@ try{
     }//GEN-LAST:event_btnVisaAvslutadeActionPerformed
 
     private void btnVisaAllaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAllaActionPerformed
-listaOverProjekt();        // TODO add your handling code here:
+listaOverProjektAvdelning();        // TODO add your handling code here:
     }//GEN-LAST:event_btnVisaAllaActionPerformed
-
+    private void listaMinaProjekt(){
+ try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
+       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+        for(String a : anstallda){
+                overforingsLista.addElement(a);
+        System.out.println(a);}
+        listMinaProjekt.setModel(overforingsLista);
+    }catch(InfException ex){
+        System.out.println(ex.getMessage());
+    }
+}
+    private void listaProjektJagLeder(){
+        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where projektchef =(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"')");
+      
+       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+        for(String a : anstallda){
+                overforingsLista.addElement(a);
+        System.out.println(a);}
+        listProjektDuLeder.setModel(overforingsLista);
+    }catch(InfException ex){
+        System.out.println(ex.getMessage());
+    }
+    }
+    
+    private void listaPartnersTillMinaProjekt(){
+        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(namn,', kontaktperson:',kontaktperson,', Telefon:',telefon) from partner where pid in(SELECT projekt.pid from projekt join ans_proj on projekt.pid=ans_proj.pid where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
+       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+        for(String a : anstallda){
+                overforingsLista.addElement(a);
+        System.out.println(a);}
+        listaPartnersIDinaProjekt.setModel(overforingsLista);
+    }catch(InfException ex){
+        System.out.println(ex.getMessage());
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -290,9 +389,18 @@ listaOverProjekt();        // TODO add your handling code here:
     private javax.swing.JButton btnVisaPlanerade;
     private javax.swing.JTabbedPane huvudPanelHandlaggare;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblKollegorListTitel;
+    private javax.swing.JLabel lblMinaProjekt;
+    private javax.swing.JLabel lblPartnersTillDinaProjekt;
     private javax.swing.JLabel lblProjektAvdelning;
+    private javax.swing.JLabel lblProjektDuLeder;
+    private javax.swing.JList<String> listMinaProjekt;
+    private javax.swing.JList<String> listProjektDuLeder;
     private javax.swing.JList<String> listaAnstallda;
+    private javax.swing.JList<String> listaPartnersIDinaProjekt;
     private javax.swing.JList<String> listaProjektAvdelningHandlaggare;
     private javax.swing.JTabbedPane tabHallbarhetsMal;
     private javax.swing.JPanel tabMinAvdelning;
