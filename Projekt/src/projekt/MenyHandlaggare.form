@@ -51,22 +51,29 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblMinaProjekt" min="-2" pref="99" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblProjektDuLeder" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane2" min="-2" pref="84" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" pref="79" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPartnersTillDinaProjekt" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Component id="sokRutaProjektHandlaggare" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblMinaProjekt" min="-2" pref="99" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblProjektDuLeder" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jScrollPane2" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane3" min="-2" pref="79" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPartnersTillDinaProjekt" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane4" min="-2" pref="228" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="lblSokRutaProjektHandlaggare" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="lblFelmeddelandeProjSok" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="183" max="32767" attributes="0"/>
                   </Group>
@@ -87,7 +94,13 @@
                           <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="116" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="lblSokRutaProjektHandlaggare" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="sokRutaProjektHandlaggare" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblFelmeddelandeProjSok" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="42" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -181,6 +194,24 @@
             <Component class="javax.swing.JLabel" name="lblPartnersTillDinaProjekt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Partners till dina projekt"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="sokRutaProjektHandlaggare">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="PID"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sokRutaProjektHandlaggareActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblSokRutaProjektHandlaggare">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="S&#xf6;k p&#xe5; projekt"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblFelmeddelandeProjSok">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Det blev fel, v&#xe4;nligen skriv in projektID."/>
               </Properties>
             </Component>
           </SubComponents>

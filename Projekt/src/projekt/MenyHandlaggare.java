@@ -15,6 +15,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
     private InfDB idb;
     private String inloggadAnvandare;
     private String anvandarensAvdelning;
+    private String anvandarensAID;
 
     /**
      * Creates new form MenyHandlaggare
@@ -24,11 +25,13 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         this.inloggadAnvandare = inloggadAnvandare;
         try{
         anvandarensAvdelning = idb.fetchSingle("SELECT avdelning FROM anstalld where epost ='"+inloggadAnvandare+"'");
+        anvandarensAID = idb.fetchSingle("SELECT aid FROM anstalld where epost ='"+inloggadAnvandare+"'");
         }catch(InfException ex){
             System.out.println(ex.getMessage());
         }
         initComponents();
         lblFelmeddelandeSokning.setVisible(false);
+        lblFelmeddelandeProjSok.setVisible(false);
         listaOverKollegor();
         listaOverProjektAvdelning();
         listaMinaProjekt();
@@ -81,6 +84,9 @@ try{
         jScrollPane4 = new javax.swing.JScrollPane();
         listaPartnersIDinaProjekt = new javax.swing.JList<>();
         lblPartnersTillDinaProjekt = new javax.swing.JLabel();
+        sokRutaProjektHandlaggare = new javax.swing.JTextField();
+        lblSokRutaProjektHandlaggare = new javax.swing.JLabel();
+        lblFelmeddelandeProjSok = new javax.swing.JLabel();
         tabMinAvdelning = new javax.swing.JPanel();
         AnstalldaScrollPane = new javax.swing.JScrollPane();
         listaAnstallda = new javax.swing.JList<>();
@@ -127,25 +133,41 @@ try{
 
         lblPartnersTillDinaProjekt.setText("Partners till dina projekt");
 
+        sokRutaProjektHandlaggare.setText("PID");
+        sokRutaProjektHandlaggare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sokRutaProjektHandlaggareActionPerformed(evt);
+            }
+        });
+
+        lblSokRutaProjektHandlaggare.setText("Sök på projekt");
+
+        lblFelmeddelandeProjSok.setText("Det blev fel, vänligen skriv in projektID.");
+
         javax.swing.GroupLayout tabMinaProjektLayout = new javax.swing.GroupLayout(tabMinaProjekt);
         tabMinaProjekt.setLayout(tabMinaProjektLayout);
         tabMinaProjektLayout.setHorizontalGroup(
             tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabMinaProjektLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(tabMinaProjektLayout.createSequentialGroup()
-                        .addComponent(lblMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblProjektDuLeder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(tabMinaProjektLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
                 .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPartnersTillDinaProjekt)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                        .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                                .addComponent(lblMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblProjektDuLeder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPartnersTillDinaProjekt)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblSokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFelmeddelandeProjSok))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         tabMinaProjektLayout.setVerticalGroup(
@@ -161,7 +183,13 @@ try{
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addComponent(lblSokRutaProjektHandlaggare)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFelmeddelandeProjSok)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         huvudPanelHandlaggare.addTab("Mina Projekt", tabMinaProjekt);
@@ -361,6 +389,33 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
         }
                                                   // TODO add your handling code here:
     }//GEN-LAST:event_tfSokRutaHandlaggareActionPerformed
+
+    private void sokRutaProjektHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokRutaProjektHandlaggareActionPerformed
+ String projektID = sokRutaProjektHandlaggare.getText();
+        
+        try {
+            String sqlFraga = "SELECT pid FROM projekt WHERE pid = "+ projektID;
+            System.out.println(sqlFraga);
+            String pidFinns = idb.fetchSingle(sqlFraga);
+            if(projektID.equals(pidFinns)){
+                String sqlFragaProjektLedare= "SELECT projektchef FROM projekt where pid="+pidFinns;
+                String isLedare = idb.fetchSingle(sqlFragaProjektLedare);
+                if(isLedare.equals(anvandarensAID)){
+                new ProjektDetaljer(idb,pidFinns).setVisible(true);
+                 lblFelmeddelandeProjSok.setVisible(false);}else{
+            new projektInformation(idb,pidFinns).setVisible(true);
+            lblFelmeddelandeProjSok.setVisible(false);
+                }
+            }else{
+                
+            lblFelmeddelandeProjSok.setVisible(true);}
+        }
+        
+        catch(InfException ex){
+        System.out.println(ex.getMessage());
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_sokRutaProjektHandlaggareActionPerformed
     private void listaMinaProjekt(){
  try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
@@ -442,6 +497,7 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblFelmeddelandeProjSok;
     private javax.swing.JLabel lblFelmeddelandeSokning;
     private javax.swing.JLabel lblKollegorListTitel;
     private javax.swing.JLabel lblMinaProjekt;
@@ -449,11 +505,13 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
     private javax.swing.JLabel lblProjektAvdelning;
     private javax.swing.JLabel lblProjektDuLeder;
     private javax.swing.JLabel lblSokHandlaggare;
+    private javax.swing.JLabel lblSokRutaProjektHandlaggare;
     private javax.swing.JList<String> listMinaProjekt;
     private javax.swing.JList<String> listProjektDuLeder;
     private javax.swing.JList<String> listaAnstallda;
     private javax.swing.JList<String> listaPartnersIDinaProjekt;
     private javax.swing.JList<String> listaProjektAvdelningHandlaggare;
+    private javax.swing.JTextField sokRutaProjektHandlaggare;
     private javax.swing.JTabbedPane tabHallbarhetsMal;
     private javax.swing.JPanel tabMinAvdelning;
     private javax.swing.JPanel tabMinaProjekt;
