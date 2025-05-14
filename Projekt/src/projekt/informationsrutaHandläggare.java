@@ -42,16 +42,11 @@ public class informationsrutaHandläggare extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        tfNamn = new javax.swing.JScrollPane();
-        tfNamnArea = new javax.swing.JTextArea();
-        tfEpost = new javax.swing.JScrollPane();
-        tfEpostArea = new javax.swing.JTextArea();
-        tfAnstallningId = new javax.swing.JScrollPane();
-        tfAnstallningIdArea = new javax.swing.JTextArea();
-        tfAdress = new javax.swing.JScrollPane();
-        tfAdressArea = new javax.swing.JTextArea();
-        tfTelefon = new javax.swing.JScrollPane();
-        tfTelefonArea = new javax.swing.JTextArea();
+        tfNamnArea = new javax.swing.JLabel();
+        tfEpostArea = new javax.swing.JLabel();
+        tfAnstallningIdArea = new javax.swing.JLabel();
+        tfAdressArea = new javax.swing.JLabel();
+        tfTelefonArea = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,25 +60,15 @@ public class informationsrutaHandläggare extends javax.swing.JFrame {
 
         jLabel5.setText("Telefonnummer:");
 
-        tfNamnArea.setColumns(20);
-        tfNamnArea.setRows(5);
-        tfNamn.setViewportView(tfNamnArea);
+        tfNamnArea.setText("jLabel6");
 
-        tfEpostArea.setColumns(20);
-        tfEpostArea.setRows(5);
-        tfEpost.setViewportView(tfEpostArea);
+        tfEpostArea.setText("jLabel7");
 
-        tfAnstallningIdArea.setColumns(20);
-        tfAnstallningIdArea.setRows(5);
-        tfAnstallningId.setViewportView(tfAnstallningIdArea);
+        tfAnstallningIdArea.setText("jLabel8");
 
-        tfAdressArea.setColumns(20);
-        tfAdressArea.setRows(5);
-        tfAdress.setViewportView(tfAdressArea);
+        tfAdressArea.setText("jLabel9");
 
-        tfTelefonArea.setColumns(20);
-        tfTelefonArea.setRows(5);
-        tfTelefon.setViewportView(tfTelefonArea);
+        tfTelefonArea.setText("jLabel10");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,38 +82,38 @@ public class informationsrutaHandläggare extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfEpost, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                    .addComponent(tfNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(tfAnstallningId, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(tfAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(207, Short.MAX_VALUE))
+                    .addComponent(tfNamnArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfEpostArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfAnstallningIdArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfAdressArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfTelefonArea, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tfNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNamnArea))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tfEpostArea))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfAnstallningId, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfAnstallningIdArea))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tfAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tfAdressArea))
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tfTelefonArea))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
 
@@ -243,15 +228,10 @@ public class informationsrutaHandläggare extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane tfAdress;
-    private javax.swing.JTextArea tfAdressArea;
-    private javax.swing.JScrollPane tfAnstallningId;
-    private javax.swing.JTextArea tfAnstallningIdArea;
-    private javax.swing.JScrollPane tfEpost;
-    private javax.swing.JTextArea tfEpostArea;
-    private javax.swing.JScrollPane tfNamn;
-    private javax.swing.JTextArea tfNamnArea;
-    private javax.swing.JScrollPane tfTelefon;
-    private javax.swing.JTextArea tfTelefonArea;
+    private javax.swing.JLabel tfAdressArea;
+    private javax.swing.JLabel tfAnstallningIdArea;
+    private javax.swing.JLabel tfEpostArea;
+    private javax.swing.JLabel tfNamnArea;
+    private javax.swing.JLabel tfTelefonArea;
     // End of variables declaration//GEN-END:variables
 }
