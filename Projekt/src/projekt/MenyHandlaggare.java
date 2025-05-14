@@ -28,6 +28,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
         initComponents();
+        lblFelmeddelandeSokning.setVisible(false);
         listaOverKollegor();
         listaOverProjektAvdelning();
         listaMinaProjekt();
@@ -91,6 +92,9 @@ try{
         btnVisaPlanerade = new javax.swing.JButton();
         btnVisaAvslutade = new javax.swing.JButton();
         btnVisaAlla = new javax.swing.JButton();
+        lblSokHandlaggare = new javax.swing.JLabel();
+        tfSokRutaHandlaggare = new javax.swing.JTextField();
+        lblFelmeddelandeSokning = new javax.swing.JLabel();
         tabMinaUppgifter = new javax.swing.JTabbedPane();
         tabHallbarhetsMal = new javax.swing.JTabbedPane();
 
@@ -208,29 +212,47 @@ try{
             }
         });
 
+        lblSokHandlaggare.setText("Sök på en handläggare:");
+
+        tfSokRutaHandlaggare.setText("Namn/Epost");
+        tfSokRutaHandlaggare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSokRutaHandlaggareActionPerformed(evt);
+            }
+        });
+
+        lblFelmeddelandeSokning.setBackground(new java.awt.Color(255, 0, 51));
+        lblFelmeddelandeSokning.setForeground(new java.awt.Color(51, 51, 51));
+        lblFelmeddelandeSokning.setText("Hittade ingen, skriv om frågan");
+
         javax.swing.GroupLayout tabMinAvdelningLayout = new javax.swing.GroupLayout(tabMinAvdelning);
         tabMinAvdelning.setLayout(tabMinAvdelningLayout);
         tabMinAvdelningLayout.setHorizontalGroup(
             tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabMinAvdelningLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(41, 41, 41)
                 .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AnstalldaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFelmeddelandeSokning)
                     .addGroup(tabMinAvdelningLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lblKollegorListTitel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(lblProjektAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVisaPagaende)
-                    .addComponent(btnVisaPlanerade)
-                    .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnVisaAlla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVisaAvslutade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                        .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tfSokRutaHandlaggare)
+                            .addComponent(lblSokHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AnstalldaScrollPane)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabMinAvdelningLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(lblKollegorListTitel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(lblProjektAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVisaPagaende)
+                            .addComponent(btnVisaPlanerade)
+                            .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnVisaAlla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnVisaAvslutade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
         tabMinAvdelningLayout.setVerticalGroup(
             tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +273,13 @@ try{
                         .addComponent(btnVisaAvslutade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVisaAlla)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSokHandlaggare)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfSokRutaHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFelmeddelandeSokning)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         huvudPanelHandlaggare.addTab("Min Avdelning", tabMinAvdelning);
@@ -311,6 +339,27 @@ try{
     private void btnVisaAllaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAllaActionPerformed
 listaOverProjektAvdelning();        // TODO add your handling code here:
     }//GEN-LAST:event_btnVisaAllaActionPerformed
+
+    private void tfSokRutaHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSokRutaHandlaggareActionPerformed
+   String kollegaAttSoka = tfSokRutaHandlaggare.getText();
+        
+        try {
+            String sqlFraga = "SELECT AID from anstalld where concat(fornamn,' ',efternamn,' ',epost) like concat('%','"+kollegaAttSoka+"','%') and avdelning ="+anvandarensAvdelning+" limit 1";
+            System.out.println(sqlFraga);
+            String aktuellSokning = idb.fetchSingle(sqlFraga);
+            if(aktuellSokning==null){
+             lblFelmeddelandeSokning.setVisible(true);
+            }else{
+                //new informationsRutaHandlaggare(idb,aktuellSokning)
+                System.out.println(aktuellSokning);
+                lblFelmeddelandeSokning.setVisible(false);
+        }}
+            catch(InfException ex){
+        System.out.println(ex.getMessage());
+
+        }
+                                                  // TODO add your handling code here:
+    }//GEN-LAST:event_tfSokRutaHandlaggareActionPerformed
     private void listaMinaProjekt(){
  try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
@@ -392,11 +441,13 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblFelmeddelandeSokning;
     private javax.swing.JLabel lblKollegorListTitel;
     private javax.swing.JLabel lblMinaProjekt;
     private javax.swing.JLabel lblPartnersTillDinaProjekt;
     private javax.swing.JLabel lblProjektAvdelning;
     private javax.swing.JLabel lblProjektDuLeder;
+    private javax.swing.JLabel lblSokHandlaggare;
     private javax.swing.JList<String> listMinaProjekt;
     private javax.swing.JList<String> listProjektDuLeder;
     private javax.swing.JList<String> listaAnstallda;
@@ -406,5 +457,6 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
     private javax.swing.JPanel tabMinAvdelning;
     private javax.swing.JPanel tabMinaProjekt;
     private javax.swing.JTabbedPane tabMinaUppgifter;
+    private javax.swing.JTextField tfSokRutaHandlaggare;
     // End of variables declaration//GEN-END:variables
 }
