@@ -350,7 +350,8 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
             if(aktuellSokning==null){
              lblFelmeddelandeSokning.setVisible(true);
             }else{
-                //new informationsRutaHandlaggare(idb,aktuellSokning)
+                informationsrutaHandläggare x = new informationsrutaHandläggare(idb,aktuellSokning);
+                x.setVisible(true);
                 System.out.println(aktuellSokning);
                 lblFelmeddelandeSokning.setVisible(false);
         }}
