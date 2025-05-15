@@ -60,12 +60,12 @@ public class Validering {
         return resultat;
     }
     
-    // Validerar att användarens lösenord är minst 10 tecken långt samt innehåller minst en siffra
+    // Validerar att användarens lösenord är minst 10 tecken långt 
     public static boolean isValidLosenord(String losenord) {
         
         boolean resultat = true;
     {
-        String losenordRegex = "^(?=.*\\d)[a-zA-Z0-9]{10,}$";
+        String losenordRegex = "^[a-zA-Z0-9]{10,}$";
         if (!losenord.matches(losenordRegex)) {
             JOptionPane.showMessageDialog(null, "Ogiltigt lösenord");
             resultat = false;
