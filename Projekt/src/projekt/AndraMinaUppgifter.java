@@ -17,7 +17,7 @@ public class AndraMinaUppgifter extends javax.swing.JFrame {
     /**
      * Creates new form AndraMinaUppgifter
      */
-    public AndraMinaUppgifter(InfDB idb) {
+    public AndraMinaUppgifter(InfDB idb,String uppgifterna) {
         this.idb = idb;
         this.uppgifterna = uppgifterna;
         initComponents();

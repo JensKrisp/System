@@ -37,6 +37,13 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         listaMinaProjekt();
         listaProjektJagLeder();
         listaPartnersTillMinaProjekt();
+        setLblMittNamn();
+        setLblMittLosenord();
+        setLblMittAnstallningsDatum();
+        setLblMinTelefon();
+        setLblMinEpost();
+        setLblMinAvdelning();
+        setLblMinAdress();
     }
     public void listaOverKollegor(){
 try{
@@ -59,6 +66,51 @@ try{
     }catch(InfException ex){
         System.out.println(ex.getMessage());
     }}
+    public void setLblMinEpost(){
+try{
+    String epost = idb.fetchSingle("select epost from anstalld where aid ="+anvandarensAID);
+    lblMinEpost.setText("Min epost: "+epost);
+}catch(InfException ex){
+    System.out.println(ex.getMessage());
+}}
+    public void setLblMittNamn(){
+try{
+    String namn = idb.fetchSingle("select concat(fornamn,' ',efternamn) from anstalld where aid ="+anvandarensAID);
+    lblMittnamn.setText("Mitt namn: "+namn);
+}catch(InfException ex){
+    System.out.println(ex.getMessage());
+}}
+    public void setLblMinAdress(){
+try{
+    String adress = idb.fetchSingle("select adress from anstalld where aid ="+anvandarensAID);
+    lblMinAdress.setText("Min adress: "+adress);
+}catch(InfException ex){
+    System.out.println(ex.getMessage());
+}}
+       public void setLblMittLosenord(){
+try{
+    String losenord = idb.fetchSingle("select losenord from anstalld where aid ="+anvandarensAID);
+    lblMittLosenord.setText("Min adress: "+losenord);
+}catch(InfException ex){
+    System.out.println(ex.getMessage());
+}}
+          public void setLblMinAvdelning(){
+lblMinAvdelning.setText("Min avdelning: "+anvandarensAvdelning);
+}
+   public void setLblMinTelefon(){
+try{
+    String telefon = idb.fetchSingle("select telefon from anstalld where aid ="+anvandarensAID);
+    lblMinTelefon.setText("Min telefon: "+telefon);
+}catch(InfException ex){
+    System.out.println(ex.getMessage());
+}}
+      public void setLblMittAnstallningsDatum(){
+try{
+    String anstallningsDatum = idb.fetchSingle("select anstallningsdatum from anstalld where aid ="+anvandarensAID);
+    lblMittAnstallningsDatum.setText("Mitt anstallningsdatum: "+anstallningsDatum);
+}catch(InfException ex){
+    System.out.println(ex.getMessage());
+}}
 
         /**
          * This method is called from within the constructor to initialize the form.
@@ -73,7 +125,7 @@ try{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        huvudPanelHandlaggare = new javax.swing.JTabbedPane();
+        tabHuvudtabHandlaggare = new javax.swing.JTabbedPane();
         tabMinaProjekt = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listMinaProjekt = new javax.swing.JList<>();
@@ -101,8 +153,16 @@ try{
         lblSokHandlaggare = new javax.swing.JLabel();
         tfSokRutaHandlaggare = new javax.swing.JTextField();
         lblFelmeddelandeSokning = new javax.swing.JLabel();
-        tabMinaUppgifter = new javax.swing.JTabbedPane();
-        tabHallbarhetsMal = new javax.swing.JTabbedPane();
+        tabMinaUppgifter = new javax.swing.JPanel();
+        lblMittnamn = new javax.swing.JLabel();
+        lblMinEpost = new javax.swing.JLabel();
+        lblMinAdress = new javax.swing.JLabel();
+        lblMittLosenord = new javax.swing.JLabel();
+        lblMinAvdelning = new javax.swing.JLabel();
+        lblMinTelefon = new javax.swing.JLabel();
+        lblMittAnstallningsDatum = new javax.swing.JLabel();
+        btnAndraMinaUppgifter = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,7 +252,7 @@ try{
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        huvudPanelHandlaggare.addTab("Mina Projekt", tabMinaProjekt);
+        tabHuvudtabHandlaggare.addTab("Mina Projekt", tabMinaProjekt);
 
         listaAnstallda.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -310,89 +370,167 @@ try{
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        huvudPanelHandlaggare.addTab("Min Avdelning", tabMinAvdelning);
-        huvudPanelHandlaggare.addTab("Mina Uppgifter", tabMinaUppgifter);
-        huvudPanelHandlaggare.addTab("Hållbarhetsmål", tabHallbarhetsMal);
+        tabHuvudtabHandlaggare.addTab("Min Avdelning", tabMinAvdelning);
+
+        lblMittnamn.setText("jLabel1");
+
+        lblMinEpost.setText("jLabel1");
+
+        lblMinAdress.setText("jLabel1");
+
+        lblMittLosenord.setText("jLabel1");
+
+        lblMinAvdelning.setText("jLabel1");
+
+        lblMinTelefon.setText("jLabel1");
+
+        lblMittAnstallningsDatum.setText("jLabel1");
+
+        btnAndraMinaUppgifter.setText("Ändra Uppgifter");
+        btnAndraMinaUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraMinaUppgifterActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tabMinaUppgifterLayout = new javax.swing.GroupLayout(tabMinaUppgifter);
+        tabMinaUppgifter.setLayout(tabMinaUppgifterLayout);
+        tabMinaUppgifterLayout.setHorizontalGroup(
+            tabMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabMinaUppgifterLayout.createSequentialGroup()
+                .addGroup(tabMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabMinaUppgifterLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(tabMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMittnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(tabMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblMittAnstallningsDatum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                                .addComponent(lblMinTelefon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblMinAvdelning, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblMittLosenord, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblMinAdress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblMinEpost, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(tabMinaUppgifterLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(btnAndraMinaUppgifter)))
+                .addContainerGap(362, Short.MAX_VALUE))
+        );
+        tabMinaUppgifterLayout.setVerticalGroup(
+            tabMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabMinaUppgifterLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lblMittnamn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMinEpost)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMinAdress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMittLosenord)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMinAvdelning)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMinTelefon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMittAnstallningsDatum)
+                .addGap(18, 18, 18)
+                .addComponent(btnAndraMinaUppgifter)
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+
+        tabHuvudtabHandlaggare.addTab("Mina Uppgifter", tabMinaUppgifter);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 624, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 302, Short.MAX_VALUE)
+        );
+
+        tabHuvudtabHandlaggare.addTab("tab4", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(huvudPanelHandlaggare, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tabHuvudtabHandlaggare, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(huvudPanelHandlaggare, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tabHuvudtabHandlaggare, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVisaPagaendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaPagaendeActionPerformed
- try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Pågående' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
-       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
-        for(String a : anstallda){
-                overforingsLista.addElement(a);
-        System.out.println(a);}
-        listaProjektAvdelningHandlaggare.setModel(overforingsLista);
-    }catch(InfException ex){
-        System.out.println(ex.getMessage());
-    }        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVisaPagaendeActionPerformed
-
-    private void btnVisaPlaneradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaPlaneradeActionPerformed
-        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Planerat' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
-       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
-        for(String a : anstallda){
-                overforingsLista.addElement(a);
-        System.out.println(a);}
-        listaProjektAvdelningHandlaggare.setModel(overforingsLista);
-    }catch(InfException ex){
-        System.out.println(ex.getMessage());
-    }        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVisaPlaneradeActionPerformed
-
-    private void btnVisaAvslutadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAvslutadeActionPerformed
- try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Avslutat' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
-       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
-        for(String a : anstallda){
-                overforingsLista.addElement(a);
-        System.out.println(a);}
-        listaProjektAvdelningHandlaggare.setModel(overforingsLista);
-    }catch(InfException ex){
-        System.out.println(ex.getMessage());
-    }        // TODO add your handling code here:        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVisaAvslutadeActionPerformed
-
-    private void btnVisaAllaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAllaActionPerformed
-listaOverProjektAvdelning();        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVisaAllaActionPerformed
-
     private void tfSokRutaHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSokRutaHandlaggareActionPerformed
-   String kollegaAttSoka = tfSokRutaHandlaggare.getText();
-        
+        String kollegaAttSoka = tfSokRutaHandlaggare.getText();
+
         try {
             String sqlFraga = "SELECT AID from anstalld where concat(fornamn,' ',efternamn,' ',epost) like concat('%','"+kollegaAttSoka+"','%') and avdelning ="+anvandarensAvdelning+" limit 1";
             System.out.println(sqlFraga);
             String aktuellSokning = idb.fetchSingle(sqlFraga);
             if(aktuellSokning==null){
-             lblFelmeddelandeSokning.setVisible(true);
+                lblFelmeddelandeSokning.setVisible(true);
             }else{
                 informationsrutaHandläggare x = new informationsrutaHandläggare(idb,aktuellSokning);
                 x.setVisible(true);
                 System.out.println(aktuellSokning);
                 lblFelmeddelandeSokning.setVisible(false);
-        }}
+            }}
             catch(InfException ex){
-        System.out.println(ex.getMessage());
+                System.out.println(ex.getMessage());
 
-        }
-                                                  // TODO add your handling code here:
+            }
+            // TODO add your handling code here:
     }//GEN-LAST:event_tfSokRutaHandlaggareActionPerformed
 
+    private void btnVisaAllaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAllaActionPerformed
+        listaOverProjektAvdelning();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisaAllaActionPerformed
+
+    private void btnVisaAvslutadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAvslutadeActionPerformed
+        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Avslutat' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
+            DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+            for(String a : anstallda){
+                overforingsLista.addElement(a);
+                System.out.println(a);}
+            listaProjektAvdelningHandlaggare.setModel(overforingsLista);
+        }catch(InfException ex){
+            System.out.println(ex.getMessage());
+        }        // TODO add your handling code here:        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisaAvslutadeActionPerformed
+
+    private void btnVisaPlaneradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaPlaneradeActionPerformed
+        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Planerat' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
+            DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+            for(String a : anstallda){
+                overforingsLista.addElement(a);
+                System.out.println(a);}
+            listaProjektAvdelningHandlaggare.setModel(overforingsLista);
+        }catch(InfException ex){
+            System.out.println(ex.getMessage());
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisaPlaneradeActionPerformed
+
+    private void btnVisaPagaendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaPagaendeActionPerformed
+        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where status = 'Pågående' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
+            DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+            for(String a : anstallda){
+                overforingsLista.addElement(a);
+                System.out.println(a);}
+            listaProjektAvdelningHandlaggare.setModel(overforingsLista);
+        }catch(InfException ex){
+            System.out.println(ex.getMessage());
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisaPagaendeActionPerformed
+
     private void sokRutaProjektHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokRutaProjektHandlaggareActionPerformed
- String projektID = sokRutaProjektHandlaggare.getText();
-        
+        String projektID = sokRutaProjektHandlaggare.getText();
+
         try {
             String sqlFraga = "SELECT pid FROM projekt WHERE pid = "+ projektID;
             System.out.println(sqlFraga);
@@ -401,21 +539,25 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
                 String sqlFragaProjektLedare= "SELECT projektchef FROM projekt where pid="+pidFinns;
                 String isLedare = idb.fetchSingle(sqlFragaProjektLedare);
                 if(isLedare.equals(anvandarensAID)){
-                new ProjektDetaljer(idb,pidFinns).setVisible(true);
-                 lblFelmeddelandeProjSok.setVisible(false);}else{
-            new projektInformation(idb,pidFinns).setVisible(true);
-            lblFelmeddelandeProjSok.setVisible(false);
+                    new ProjektDetaljer(idb,pidFinns).setVisible(true);
+                    lblFelmeddelandeProjSok.setVisible(false);}else{
+                    new projektInformation(idb,pidFinns).setVisible(true);
+                    lblFelmeddelandeProjSok.setVisible(false);
                 }
             }else{
-                
-            lblFelmeddelandeProjSok.setVisible(true);}
+
+                lblFelmeddelandeProjSok.setVisible(true);}
         }
-        
+
         catch(InfException ex){
-        System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage());
 
         }        // TODO add your handling code here:
     }//GEN-LAST:event_sokRutaProjektHandlaggareActionPerformed
+
+    private void btnAndraMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraMinaUppgifterActionPerformed
+new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAndraMinaUppgifterActionPerformed
     private void listaMinaProjekt(){
  try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
@@ -488,11 +630,12 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane AnstalldaScrollPane;
+    private javax.swing.JButton btnAndraMinaUppgifter;
     private javax.swing.JButton btnVisaAlla;
     private javax.swing.JButton btnVisaAvslutade;
     private javax.swing.JButton btnVisaPagaende;
     private javax.swing.JButton btnVisaPlanerade;
-    private javax.swing.JTabbedPane huvudPanelHandlaggare;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -500,7 +643,14 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
     private javax.swing.JLabel lblFelmeddelandeProjSok;
     private javax.swing.JLabel lblFelmeddelandeSokning;
     private javax.swing.JLabel lblKollegorListTitel;
+    private javax.swing.JLabel lblMinAdress;
+    private javax.swing.JLabel lblMinAvdelning;
+    private javax.swing.JLabel lblMinEpost;
+    private javax.swing.JLabel lblMinTelefon;
     private javax.swing.JLabel lblMinaProjekt;
+    private javax.swing.JLabel lblMittAnstallningsDatum;
+    private javax.swing.JLabel lblMittLosenord;
+    private javax.swing.JLabel lblMittnamn;
     private javax.swing.JLabel lblPartnersTillDinaProjekt;
     private javax.swing.JLabel lblProjektAvdelning;
     private javax.swing.JLabel lblProjektDuLeder;
@@ -512,10 +662,10 @@ listaOverProjektAvdelning();        // TODO add your handling code here:
     private javax.swing.JList<String> listaPartnersIDinaProjekt;
     private javax.swing.JList<String> listaProjektAvdelningHandlaggare;
     private javax.swing.JTextField sokRutaProjektHandlaggare;
-    private javax.swing.JTabbedPane tabHallbarhetsMal;
+    private javax.swing.JTabbedPane tabHuvudtabHandlaggare;
     private javax.swing.JPanel tabMinAvdelning;
     private javax.swing.JPanel tabMinaProjekt;
-    private javax.swing.JTabbedPane tabMinaUppgifter;
+    private javax.swing.JPanel tabMinaUppgifter;
     private javax.swing.JTextField tfSokRutaHandlaggare;
     // End of variables declaration//GEN-END:variables
 }
