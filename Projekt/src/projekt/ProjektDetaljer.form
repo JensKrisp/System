@@ -29,19 +29,15 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="76" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btnRedigeraUppgifter" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblProjektnamn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tfProjektnamn" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblPid" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tfPid" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblBeskrivning" min="-2" max="-2" attributes="0"/>
@@ -54,9 +50,18 @@
                               <Component id="tfStartdatum" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblSlutdatum" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPid" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tfSlutdatum" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfPid" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblStartdatumFelm" max="32767" attributes="0"/>
+                              <Component id="lblSlutdatumFelm" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblSlutdatum" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tfSlutdatum" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
@@ -69,17 +74,19 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblStatusFelm" max="32767" attributes="0"/>
                           <Component id="tfProjektchef" max="32767" attributes="0"/>
                           <Component id="tfPrioritet" alignment="0" max="32767" attributes="0"/>
                           <Component id="tfStatus" alignment="0" max="32767" attributes="0"/>
                           <Component id="tfKostnad" max="32767" attributes="0"/>
                           <Component id="tfLand" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="lblProjektchefFelm" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblPrioritetFelm" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStatusUpdate" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="54" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,37 +102,50 @@
                   <Component id="lblPid" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblKostnad" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfProjektnamn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProjektnamn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfStatus" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblStatusFelm" min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfBeskrivning" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfPrioritet" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblBeskrivning" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPrioritet" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPrioritet" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblPrioritetFelm" min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfProjektchef" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProjektChef" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblStartdatumFelm" min="-2" pref="11" max="-2" attributes="0"/>
+                  <Component id="lblProjektchefFelm" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfSlutdatum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfLand" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblSlutdatum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblLand" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <Component id="lblSlutdatumFelm" min="-2" pref="9" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="btnRedigeraUppgifter" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblStatusUpdate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -189,12 +209,12 @@
         <Property name="text" type="java.lang.String" value="jTextField10"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnRedigeraUppgifter">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Uppdatera"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRedigeraUppgifterActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPid">
@@ -245,6 +265,36 @@
     <Component class="javax.swing.JLabel" name="lblLand">
       <Properties>
         <Property name="text" type="java.lang.String" value="Land:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStatusUpdate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStatusFelm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ej godk&#xe4;nd status"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStartdatumFelm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fel datumformat: &#xc5;&#xc5;&#xc5;&#xc5;-MM-DD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSlutdatumFelm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fel datumformat: &#xc5;&#xc5;&#xc5;&#xc5;-MM-DD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPrioritetFelm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prioritet finns ej"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProjektchefFelm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ej befintlig handl&#xe4;ggare"/>
       </Properties>
     </Component>
   </SubComponents>
