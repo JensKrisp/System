@@ -13,10 +13,18 @@ import javax.swing.JOptionPane;
  */
 public class Validering {
     
+    // Validerar att formatatet för Epostadressen är korrekt
     public static boolean isValidEpost(String epost) {
-        // Validering för e-post med reguljära uttryck
+        
+    boolean resultat = true;
+        
         String epostRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        return epost.matches(epostRegex);
+        if (!epost.matches(epostRegex)) {
+            JOptionPane.showMessageDialog(null, "Ogiltig e-postadress");
+            resultat = false;
+        }
+        
+        return resultat;
     }
    
     public static boolean ejTomtFalt(JTextField faltAttKontrollera) {
@@ -28,13 +36,13 @@ public class Validering {
          resultat = false;
          faltAttKontrollera.requestFocus();
         }
-    
-    return resultat;
+        
+        return resultat;
     }
 
     public static boolean isHeltal(JTextField faltAttKontrollera){
-    
-    boolean resultat = true;
+        
+        boolean resultat = true;
         // Här görs en try och catch, inte det bästa enligt Johan. Men han tycker att det är pedagogiskt.
         
         try {
@@ -43,18 +51,57 @@ public class Validering {
         // Skicka tillbaka markören till rutan
         faltAttKontrollera.requestFocus();
         }
-        catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Ange heltal!");
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null, "Inmatningsrutan får endast innehålla heltal");
             resultat = false;
         }
-    return resultat;
+        
+        return resultat;
     }
     
-    
-    
-    
+    // Validerar att användarens lösenord är minst 10 tecken långt samt innehåller minst en siffra
     public static boolean isValidLosenord(String losenord) {
-        //  Validering för lösenord: det ska vara minst 10 tecken långt
-        return losenord.length() >= 10;
+        
+        boolean resultat = true;
+    {
+        String losenordRegex = "^(?=.*\\d)[a-zA-Z0-9]{10,}$";
+        if (!losenord.matches(losenordRegex)) {
+            JOptionPane.showMessageDialog(null, "Ogiltigt lösenord");
+            resultat = false;
+        }
+        
+        return resultat;
+    }
+    }
+    
+    // Validerar att datumformatet är "YYYY-MM-DD"
+    public static boolean isValidDatum(String datum) {
+        
+        boolean resultat = true;
+    {
+        String datumRegex = "^\\d{4}-\\d{2}-\\d{2}$";
+        if (!datum.matches(datumRegex)) {
+            JOptionPane.showMessageDialog(null, "Datumformatet ska vara \"YYYY-MM-DD\"");
+            resultat = false;
+        }
+        
+        return resultat;
+    }
+    }
+    
+    // Validerar att textfältet endast innehåller bokstäver
+    public static boolean isOnlyLetters(String letter) {
+        
+        boolean resultat = true;
+    {
+        String letterRegex = "^[A-Za-zÅÄÖåäö]+$";
+        if (!letter.matches(letterRegex)) {
+            JOptionPane.showMessageDialog(null, "Inmatningsrutan får endast innehålla bokstäver");
+            resultat = false;
+    }
+        
+        return resultat;
+    }
     }
 }

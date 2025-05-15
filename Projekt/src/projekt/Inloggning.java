@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projekt;
+import javax.swing.JOptionPane;
 import ljud.LjudSystem;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -108,6 +109,10 @@ private InfDB idb;
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
 String ePost = tfEPost.getText();
 String losenord = tfLosenord.getText();
+boolean ValidEpost = Validering.isValidEpost(ePost);
+boolean ValidLosenord = Validering.isValidLosenord(losenord);
+
+if (ValidEpost && ValidLosenord)
 
 try{
     
