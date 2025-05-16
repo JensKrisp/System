@@ -29,7 +29,7 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="76" max="32767" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="btnRedigeraUppgifter" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
@@ -76,17 +76,17 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblStatusFelm" max="32767" attributes="0"/>
                           <Component id="tfProjektchef" max="32767" attributes="0"/>
-                          <Component id="tfPrioritet" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfStatus" alignment="0" max="32767" attributes="0"/>
                           <Component id="tfKostnad" max="32767" attributes="0"/>
                           <Component id="tfLand" alignment="0" pref="0" max="32767" attributes="0"/>
                           <Component id="lblProjektchefFelm" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblPrioritetFelm" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbPrioritet" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbStatus" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="lblStatusUpdate" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,7 +107,7 @@
                   <Component id="tfProjektnamn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProjektnamn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblStatusFelm" min="-2" pref="17" max="-2" attributes="0"/>
@@ -116,7 +116,7 @@
                   <Component id="tfBeskrivning" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblBeskrivning" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPrioritet" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfPrioritet" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="cbPrioritet" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblPrioritetFelm" min="-2" pref="17" max="-2" attributes="0"/>
@@ -187,16 +187,6 @@
     <Component class="javax.swing.JLabel" name="lblAktuelltProjektNamn">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfStatus">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField7"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfPrioritet">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField8"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfProjektchef">
@@ -296,6 +286,26 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ej befintlig handl&#xe4;ggare"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbStatus">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbPrioritet">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -22,6 +22,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         this.idb = idb;
         this.aktuelltProjekt = aktuelltProjekt;
         initComponents();
+        tilldelaVardeCBStatus();
+        tilldelaVardeCBPrioritet();
         hamtaLabelNamn();
         hamtaProjektNamn();
         hamtaPid();
@@ -33,11 +35,10 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         hamtaPrioritet();
         hamtaProjektchef();
         hamtaLand();
+       
         lblStatusUpdate.setVisible(false);
         lblStartdatumFelm.setVisible(false);
         lblSlutdatumFelm.setVisible(false);
-        lblStatusFelm.setVisible(false);
-        lblPrioritetFelm.setVisible(false);
         lblProjektchefFelm.setVisible(false);  
     }
 
@@ -57,8 +58,6 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         tfSlutdatum = new javax.swing.JTextField();
         tfKostnad = new javax.swing.JTextField();
         lblAktuelltProjektNamn = new javax.swing.JLabel();
-        tfStatus = new javax.swing.JTextField();
-        tfPrioritet = new javax.swing.JTextField();
         tfProjektchef = new javax.swing.JTextField();
         tfLand = new javax.swing.JTextField();
         btnRedigeraUppgifter = new javax.swing.JButton();
@@ -78,6 +77,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         lblSlutdatumFelm = new javax.swing.JLabel();
         lblPrioritetFelm = new javax.swing.JLabel();
         lblProjektchefFelm = new javax.swing.JLabel();
+        cbStatus = new javax.swing.JComboBox<>();
+        cbPrioritet = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,10 +100,6 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         tfKostnad.setText("jTextField6");
 
         lblAktuelltProjektNamn.setText("jLabel1");
-
-        tfStatus.setText("jTextField7");
-
-        tfPrioritet.setText("jTextField8");
 
         tfProjektchef.setText("jTextField9");
 
@@ -156,7 +153,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
                 .addComponent(lblAktuelltProjektNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRedigeraUppgifter)
                     .addGroup(layout.createSequentialGroup()
@@ -195,14 +192,14 @@ public class ProjektDetaljer extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblStatusFelm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfProjektchef)
-                            .addComponent(tfPrioritet)
-                            .addComponent(tfStatus)
                             .addComponent(tfKostnad)
                             .addComponent(tfLand, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                             .addComponent(lblProjektchefFelm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPrioritetFelm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblPrioritetFelm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbPrioritet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(lblStatusUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                .addGap(84, 84, 84))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +217,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
                     .addComponent(tfProjektnamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblProjektnamn)
                     .addComponent(lblStatus)
-                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblStatusFelm, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -228,7 +225,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
                     .addComponent(tfBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBeskrivning)
                     .addComponent(lblPrioritet)
-                    .addComponent(tfPrioritet, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbPrioritet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPrioritetFelm, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -269,8 +266,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         String nyttStartdatum = tfStartdatum.getText();
         String nyttSlutdatum = tfSlutdatum.getText();
         String nyttKostnad = tfKostnad.getText();
-        String nyttStatus = tfStatus.getText();
-        String nyttPrioritet = tfPrioritet.getText();
+        String nyttStatus = cbStatus.getSelectedItem().toString();
+        String nyttPrioritet = cbPrioritet.getSelectedItem().toString();
         String nyttProjektChef = tfProjektchef.getText();
         String nyttLand = tfLand.getText();
         
@@ -287,19 +284,10 @@ public class ProjektDetaljer extends javax.swing.JFrame {
        lblSlutdatumFelm.setVisible(true);
        allaFaltOk = false;
     }
-    if(!nyttPrioritet.equals("Medel") && !nyttPrioritet.equals("Hög") && !nyttPrioritet.equals("Låg")){
-        lblPrioritetFelm.setForeground(Color.RED);
-        lblPrioritetFelm.setVisible(true);
-        allaFaltOk = false;
-    }
+  
     if(idb.fetchSingle("Select aid from handlaggare where aid=" +nyttProjektChef) == null){
         lblProjektchefFelm.setForeground(Color.RED); 
         lblProjektchefFelm.setVisible(true);
-        allaFaltOk = false;
-    }
-    if(!nyttStatus.equals("Planerat") && !nyttStatus.equals("Avslutat") && !nyttStatus.equals("Pågående")){
-        lblStatusFelm.setForeground(Color.RED); 
-        lblStatusFelm.setVisible(true);
         allaFaltOk = false;
     }
     if (!allaFaltOk) {
@@ -312,8 +300,6 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     lblStatusUpdate.setVisible(false);
     lblStartdatumFelm.setVisible(false);
     lblSlutdatumFelm.setVisible(false);
-    lblStatusFelm.setVisible(false);
-    lblPrioritetFelm.setVisible(false);
     lblProjektchefFelm.setVisible(false);  
     
     String sql1 = "UPDATE Projekt SET projektnamn = '" + nyttProjektNamn + "' WHERE pid = " + aktuelltProjekt;
@@ -380,8 +366,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaPid(){
         String sqlFraga = "SELECT pid FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfPid.setText(projektNamn);
+        String projektPid = idb.fetchSingle(sqlFraga);
+        tfPid.setText(projektPid);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -390,8 +376,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
      public void hamtaBeskrivning(){
         String sqlFraga = "SELECT beskrivning FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfBeskrivning.setText(projektNamn);
+        String projektBeskrivning = idb.fetchSingle(sqlFraga);
+        tfBeskrivning.setText(projektBeskrivning);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -400,8 +386,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
      public void hamtaStartdatum(){
         String sqlFraga = "SELECT startdatum FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfStartdatum.setText(projektNamn);
+        String projektStartdatum = idb.fetchSingle(sqlFraga);
+        tfStartdatum.setText(projektStartdatum);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -410,8 +396,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaSlutdatum(){
         String sqlFraga = "SELECT slutdatum FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfSlutdatum.setText(projektNamn);
+        String projektSlutdatum = idb.fetchSingle(sqlFraga);
+        tfSlutdatum.setText(projektSlutdatum);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -420,8 +406,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaKostnad(){
         String sqlFraga = "SELECT kostnad FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfKostnad.setText(projektNamn);
+        String projektKostnad = idb.fetchSingle(sqlFraga);
+        tfKostnad.setText(projektKostnad);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -430,8 +416,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaStatus(){
         String sqlFraga = "SELECT status FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfStatus.setText(projektNamn);
+        String projektStatus = idb.fetchSingle(sqlFraga);
+        cbStatus.setSelectedItem(projektStatus);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -440,8 +426,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaPrioritet(){
         String sqlFraga = "SELECT prioritet FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfPrioritet.setText(projektNamn);
+        String projektPrioritet = idb.fetchSingle(sqlFraga);
+        cbPrioritet.setSelectedItem(projektPrioritet);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -450,8 +436,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaProjektchef(){
         String sqlFraga = "SELECT projektchef FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfProjektchef.setText(projektNamn);
+        String projektChef = idb.fetchSingle(sqlFraga);
+        tfProjektchef.setText(projektChef);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -460,13 +446,24 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaLand(){
         String sqlFraga = "SELECT land FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfLand.setText(projektNamn);
+        String projektLand = idb.fetchSingle(sqlFraga);
+        tfLand.setText(projektLand);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
     } }
     
+    public void tilldelaVardeCBStatus(){
+        cbStatus.addItem("Planerat");
+        cbStatus.addItem("Pågående");
+        cbStatus.addItem("Avslutat");
+    }
+    
+     public void tilldelaVardeCBPrioritet(){
+        cbPrioritet.addItem("Låg");
+        cbPrioritet.addItem("Medel");
+        cbPrioritet.addItem("Hög");
+    }
     
     /**
      * @param args the command line arguments
@@ -505,6 +502,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRedigeraUppgifter;
+    private javax.swing.JComboBox<String> cbPrioritet;
+    private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JLabel lblAktuelltProjektNamn;
     private javax.swing.JLabel lblBeskrivning;
     private javax.swing.JLabel lblKostnad;
@@ -526,11 +525,9 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     private javax.swing.JTextField tfKostnad;
     private javax.swing.JTextField tfLand;
     private javax.swing.JTextField tfPid;
-    private javax.swing.JTextField tfPrioritet;
     private javax.swing.JTextField tfProjektchef;
     private javax.swing.JTextField tfProjektnamn;
     private javax.swing.JTextField tfSlutdatum;
     private javax.swing.JTextField tfStartdatum;
-    private javax.swing.JTextField tfStatus;
     // End of variables declaration//GEN-END:variables
 }
