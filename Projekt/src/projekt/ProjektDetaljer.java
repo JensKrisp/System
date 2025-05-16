@@ -6,7 +6,9 @@ package projekt;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.awt.Color;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.ParseException;
 
 /**
  *
@@ -33,9 +35,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         hamtaPrioritet();
         hamtaProjektchef();
         hamtaLand();
+        
         lblStatusUpdate.setVisible(false);
-        lblStartdatumFelm.setVisible(false);
-        lblSlutdatumFelm.setVisible(false);
         lblStatusFelm.setVisible(false);
         lblPrioritetFelm.setVisible(false);
         lblProjektchefFelm.setVisible(false);  
@@ -53,8 +54,6 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         tfPid = new javax.swing.JTextField();
         tfProjektnamn = new javax.swing.JTextField();
         tfBeskrivning = new javax.swing.JTextField();
-        tfStartdatum = new javax.swing.JTextField();
-        tfSlutdatum = new javax.swing.JTextField();
         tfKostnad = new javax.swing.JTextField();
         lblAktuelltProjektNamn = new javax.swing.JLabel();
         tfStatus = new javax.swing.JTextField();
@@ -74,10 +73,10 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         lblLand = new javax.swing.JLabel();
         lblStatusUpdate = new javax.swing.JLabel();
         lblStatusFelm = new javax.swing.JLabel();
-        lblStartdatumFelm = new javax.swing.JLabel();
-        lblSlutdatumFelm = new javax.swing.JLabel();
         lblPrioritetFelm = new javax.swing.JLabel();
         lblProjektchefFelm = new javax.swing.JLabel();
+        dcStartdatum = new com.toedter.calendar.JDateChooser();
+        dcSlutdatum = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,10 +90,6 @@ public class ProjektDetaljer extends javax.swing.JFrame {
         });
 
         tfBeskrivning.setText("jTextField3");
-
-        tfStartdatum.setText("jTextField4");
-
-        tfSlutdatum.setText("jTextField5");
 
         tfKostnad.setText("jTextField6");
 
@@ -139,10 +134,6 @@ public class ProjektDetaljer extends javax.swing.JFrame {
 
         lblStatusFelm.setText("Ej godkänd status");
 
-        lblStartdatumFelm.setText("Fel datumformat: ÅÅÅÅ-MM-DD");
-
-        lblSlutdatumFelm.setText("Fel datumformat: ÅÅÅÅ-MM-DD");
-
         lblPrioritetFelm.setText("Prioritet finns ej");
 
         lblProjektchefFelm.setText("Ej befintlig handläggare");
@@ -160,31 +151,34 @@ public class ProjektDetaljer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRedigeraUppgifter)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblProjektnamn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfProjektnamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblBeskrivning)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblStartdatum)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblPid)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfPid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblStartdatumFelm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblSlutdatumFelm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(lblSlutdatum)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tfSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(70, 70, 70)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblProjektnamn)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfProjektnamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblBeskrivning)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblPid)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfPid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(70, 70, 70))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblSlutdatum)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dcSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblStartdatum)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dcStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(16, 16, 16)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblKostnad)
                             .addComponent(lblStatus)
@@ -210,46 +204,47 @@ public class ProjektDetaljer extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblAktuelltProjektNamn)
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfPid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfKostnad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPid)
-                    .addComponent(lblKostnad))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfProjektnamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProjektnamn)
-                    .addComponent(lblStatus)
-                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblStatusFelm, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBeskrivning)
-                    .addComponent(lblPrioritet)
-                    .addComponent(tfPrioritet, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPrioritetFelm, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProjektchef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStartdatum)
-                    .addComponent(lblProjektChef))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStartdatumFelm, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProjektchefFelm))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSlutdatum)
-                    .addComponent(lblLand))
-                .addGap(2, 2, 2)
-                .addComponent(lblSlutdatumFelm, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tfPid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfKostnad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPid)
+                                    .addComponent(lblKostnad))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tfProjektnamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblProjektnamn)
+                                    .addComponent(lblStatus)
+                                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblStatusFelm, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfPrioritet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(tfBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblBeskrivning)
+                                        .addComponent(lblPrioritet)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPrioritetFelm, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tfProjektchef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblStartdatum)
+                                    .addComponent(lblProjektChef)))
+                            .addComponent(dcStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblProjektchefFelm)
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSlutdatum)
+                            .addComponent(lblLand)))
+                    .addComponent(dcSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(btnRedigeraUppgifter)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblStatusUpdate)
@@ -264,10 +259,12 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     }//GEN-LAST:event_tfProjektnamnActionPerformed
 
     private void btnRedigeraUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedigeraUppgifterActionPerformed
+        SimpleDateFormat dtmFormaterare = new SimpleDateFormat("yyyy-MM-dd");
+        
         String nyttProjektNamn = tfProjektnamn.getText();
         String nyttBeskrivning  = tfBeskrivning.getText();
-        String nyttStartdatum = tfStartdatum.getText();
-        String nyttSlutdatum = tfSlutdatum.getText();
+        String nyttStartdatum = dtmFormaterare.format(dcStartdatum.getDate());
+        String nyttSlutdatum = dtmFormaterare.format(dcSlutdatum.getDate());
         String nyttKostnad = tfKostnad.getText();
         String nyttStatus = tfStatus.getText();
         String nyttPrioritet = tfPrioritet.getText();
@@ -277,16 +274,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     boolean allaFaltOk = true;    
 
         try {
-    if (!Validering.isValidDatum(nyttStartdatum) ){
-       lblStartdatumFelm.setForeground(Color.RED); 
-       lblStartdatumFelm.setVisible(true);
-       allaFaltOk = false;
-    }
-   if(!Validering.isValidDatum(nyttSlutdatum)){
-       lblSlutdatumFelm.setForeground(Color.RED);
-       lblSlutdatumFelm.setVisible(true);
-       allaFaltOk = false;
-    }
+    
     if(!nyttPrioritet.equals("Medel") && !nyttPrioritet.equals("Hög") && !nyttPrioritet.equals("Låg")){
         lblPrioritetFelm.setForeground(Color.RED);
         lblPrioritetFelm.setVisible(true);
@@ -310,8 +298,6 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     }
     
     lblStatusUpdate.setVisible(false);
-    lblStartdatumFelm.setVisible(false);
-    lblSlutdatumFelm.setVisible(false);
     lblStatusFelm.setVisible(false);
     lblPrioritetFelm.setVisible(false);
     lblProjektchefFelm.setVisible(false);  
@@ -380,8 +366,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaPid(){
         String sqlFraga = "SELECT pid FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfPid.setText(projektNamn);
+        String projektPID = idb.fetchSingle(sqlFraga);
+        tfPid.setText(projektPID);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -390,8 +376,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
      public void hamtaBeskrivning(){
         String sqlFraga = "SELECT beskrivning FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfBeskrivning.setText(projektNamn);
+        String projektBeskrivning = idb.fetchSingle(sqlFraga);
+        tfBeskrivning.setText(projektBeskrivning);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -400,28 +386,32 @@ public class ProjektDetaljer extends javax.swing.JFrame {
      public void hamtaStartdatum(){
         String sqlFraga = "SELECT startdatum FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfStartdatum.setText(projektNamn);
+        String datum = idb.fetchSingle(sqlFraga);
+        SimpleDateFormat dtmFormaterare = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDatum = dtmFormaterare.parse(datum);
+        dcStartdatum.setDate(startDatum);
         }
-        catch(InfException ex){
+        catch(InfException | ParseException ex){
         System.out.println(ex.getMessage());
     } }
     
     public void hamtaSlutdatum(){
         String sqlFraga = "SELECT slutdatum FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfSlutdatum.setText(projektNamn);
+        String datum = idb.fetchSingle(sqlFraga);
+        SimpleDateFormat dtmFormaterare = new SimpleDateFormat("yyyy-MM-dd");
+        Date slutDatum = dtmFormaterare.parse(datum);
+        dcSlutdatum.setDate(slutDatum);
         }
-        catch(InfException ex){
+        catch(InfException | ParseException ex){
         System.out.println(ex.getMessage());
     } }
     
     public void hamtaKostnad(){
         String sqlFraga = "SELECT kostnad FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfKostnad.setText(projektNamn);
+        String projektKostnad = idb.fetchSingle(sqlFraga);
+        tfKostnad.setText(projektKostnad);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -430,8 +420,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaStatus(){
         String sqlFraga = "SELECT status FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfStatus.setText(projektNamn);
+        String projektStatus = idb.fetchSingle(sqlFraga);
+        tfStatus.setText(projektStatus);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -440,8 +430,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaPrioritet(){
         String sqlFraga = "SELECT prioritet FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfPrioritet.setText(projektNamn);
+        String projektPrioritet = idb.fetchSingle(sqlFraga);
+        tfPrioritet.setText(projektPrioritet);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -450,8 +440,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaProjektchef(){
         String sqlFraga = "SELECT projektchef FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfProjektchef.setText(projektNamn);
+        String projektChef = idb.fetchSingle(sqlFraga);
+        tfProjektchef.setText(projektChef);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -460,8 +450,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     public void hamtaLand(){
         String sqlFraga = "SELECT land FROM projekt WHERE pid = "+aktuelltProjekt;
         try{
-        String projektNamn = idb.fetchSingle(sqlFraga);
-        tfLand.setText(projektNamn);
+        String projektLand = idb.fetchSingle(sqlFraga);
+        tfLand.setText(projektLand);
         }
         catch(InfException ex){
         System.out.println(ex.getMessage());
@@ -505,6 +495,8 @@ public class ProjektDetaljer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRedigeraUppgifter;
+    private com.toedter.calendar.JDateChooser dcSlutdatum;
+    private com.toedter.calendar.JDateChooser dcStartdatum;
     private javax.swing.JLabel lblAktuelltProjektNamn;
     private javax.swing.JLabel lblBeskrivning;
     private javax.swing.JLabel lblKostnad;
@@ -516,9 +508,7 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     private javax.swing.JLabel lblProjektchefFelm;
     private javax.swing.JLabel lblProjektnamn;
     private javax.swing.JLabel lblSlutdatum;
-    private javax.swing.JLabel lblSlutdatumFelm;
     private javax.swing.JLabel lblStartdatum;
-    private javax.swing.JLabel lblStartdatumFelm;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblStatusFelm;
     private javax.swing.JLabel lblStatusUpdate;
@@ -529,8 +519,6 @@ public class ProjektDetaljer extends javax.swing.JFrame {
     private javax.swing.JTextField tfPrioritet;
     private javax.swing.JTextField tfProjektchef;
     private javax.swing.JTextField tfProjektnamn;
-    private javax.swing.JTextField tfSlutdatum;
-    private javax.swing.JTextField tfStartdatum;
     private javax.swing.JTextField tfStatus;
     // End of variables declaration//GEN-END:variables
 }
