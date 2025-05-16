@@ -3,18 +3,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projekt;
+import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
  * @author hsund
  */
 public class PartnerUppgifter extends javax.swing.JFrame {
+    private InfDB idb;
+    private String partnerUppgifter;
 
     /**
      * Creates new form PartnerUppgifter
      */
-    public PartnerUppgifter() {
+    public PartnerUppgifter(InfDB idb,String partnerUppgifter) {
+        this.idb = idb;
+        this.partnerUppgifter = partnerUppgifter;
         initComponents();
+        hamtaPartnerId();
+        hamtaNamn();
+        hamtaKontaktperson();
+        hamtaKontaktEpost();
+        hamtaTelefon();
+        hamtaAdress();
+        hamtaBranch();
+        hamtaStad();
     }
 
     /**
@@ -42,6 +56,7 @@ public class PartnerUppgifter extends javax.swing.JFrame {
         tfAdress = new javax.swing.JTextField();
         tfBranch = new javax.swing.JTextField();
         tfStad = new javax.swing.JTextField();
+        btnSpara = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +91,13 @@ public class PartnerUppgifter extends javax.swing.JFrame {
         tfBranch.setText("jTextField7");
 
         tfStad.setText("jTextField8");
+
+        btnSpara.setText("Spara");
+        btnSpara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSparaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,7 +138,9 @@ public class PartnerUppgifter extends javax.swing.JFrame {
                         .addComponent(lblTelefon)
                         .addGap(79, 79, 79)
                         .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSpara)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,13 +176,132 @@ public class PartnerUppgifter extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStad)
-                    .addComponent(tfStad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfStad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSpara))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnSparaActionPerformed
+
+    public void hamtaPartnerId()
+    {
+        String sqlFraga = "SELECT pid FROM partner WHERE pid = "+partnerUppgifter;
+        try
+        {
+            String partnerId = idb.fetchSingle(sqlFraga);
+            tfPartnerId.setText(partnerId);
+        }
+        catch(InfException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void hamtaNamn()
+    {
+        String sqlFraga = "SELECT namn FROM partner WHERE pid = "+partnerUppgifter;
+        try
+        {
+            String namn = idb.fetchSingle(sqlFraga);
+            tfNamn.setText(namn);
+        }
+        catch(InfException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void hamtaKontaktperson()
+    {
+        String sqlFraga = "SELECT kontaktperson FROM partner WHERE pid = "+partnerUppgifter;
+        try
+        {
+            String kontaktperson = idb.fetchSingle(sqlFraga);
+            tfKontaktperson.setText(kontaktperson);
+        }
+        catch(InfException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void hamtaKontaktEpost()
+    {
+        String sqlFraga = "SELECT kontaktepost FROM partner WHERE pid = "+partnerUppgifter;
+        try
+        {
+            String kontaktepost = idb.fetchSingle(sqlFraga);
+            tfKontaktEpost.setText(kontaktepost);
+        }
+        catch(InfException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void hamtaTelefon()
+    {
+        String sqlFraga = "SELECT telefon FROM partner WHERE pid = "+partnerUppgifter;
+        try
+        {
+            String telefon = idb.fetchSingle(sqlFraga);
+            tfTelefon.setText(telefon);
+        }
+        catch(InfException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void hamtaAdress()
+    {
+        String sqlFraga = "SELECT adress FROM partner WHERE pid = "+partnerUppgifter;
+        try
+        {
+            String adress = idb.fetchSingle(sqlFraga);
+            tfAdress.setText(adress);
+        }
+        catch(InfException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void hamtaBranch()
+    {
+        String sqlFraga = "SELECT branch FROM partner WHERE pid = "+partnerUppgifter;
+        try
+        {
+            String branch = idb.fetchSingle(sqlFraga);
+            tfBranch.setText(branch);
+        }
+        catch(InfException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void hamtaStad()
+    {
+        String sqlFraga = "SELECT stad FROM partner WHERE pid = "+partnerUppgifter;
+        try
+        {
+            String stad = idb.fetchSingle(sqlFraga);
+            tfStad.setText(stad);
+        }
+        catch(InfException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -189,12 +332,13 @@ public class PartnerUppgifter extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PartnerUppgifter().setVisible(true);
+                // PartnerUppgifter().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSpara;
     private javax.swing.JLabel lblAdress;
     private javax.swing.JLabel lblBranch;
     private javax.swing.JLabel lblKontaktEpost;
