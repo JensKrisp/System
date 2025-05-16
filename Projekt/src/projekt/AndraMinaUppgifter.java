@@ -5,6 +5,7 @@
 package projekt;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -78,6 +79,11 @@ public class AndraMinaUppgifter extends javax.swing.JFrame {
         lblAvdelning.setText("Avdelning:");
 
         btnSpara.setText("Spara ändringar");
+        btnSpara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSparaActionPerformed(evt);
+            }
+        });
 
         tfFornamn.setText("jTextField1");
 
@@ -174,6 +180,39 @@ public class AndraMinaUppgifter extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
+        // TODO add your handling code here:
+        String fornamn = tfFornamn.getText();
+        String efternamn = tfEfternamn.getText();
+        String adress = tfAdress.getText();
+        String epost = tfEpost.getText();
+        String telefon = tfTelefon.getText();
+        String anstDatum = tfAnstDatum.getText();
+        String losen = tfLosen.getText();
+        String avdelning = tfAvdelning.getText();
+        
+        if(!Validering.isOnlyLetters(fornamn)&& !Validering.isOnlyLetters(efternamn)&&
+                !Validering.isValidDatum(anstDatum) && !Validering.isValidLosenord(losen)&&
+                !Validering.isValidEpost(epost))
+        {
+            return;
+        }
+        
+    try
+    {
+        String sql = "UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + 
+                efternamn + "',adress = '" + adress + "', epost = '" + epost + "', telefon = '"
+                + telefon + "', anstallningsdatum = '" + anstDatum + "', losenord = '" + losen
+                + "', avdelning = '" + avdelning + "WHERE aid = " + uppgifterna;
+        idb.update(sql);
+        JOptionPane.showMessageDialog(null, "Uppgifterna har uppdaterats!");
+    }
+    catch (InfException ex)
+    {
+        JOptionPane.showMessageDialog(null, "Något gick fel: " + ex.getMessage());
+    }
+    }//GEN-LAST:event_btnSparaActionPerformed
 
     
     public void hamtaFornamn()
