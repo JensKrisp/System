@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projekt;
+
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         listaMinaProjekt();
         listaProjektJagLeder();
         listaPartnersTillMinaProjekt();
+        listaOverHallbarhetsmal();
         setLblMittNamn();
         setLblMittLosenord();
         setLblMittAnstallningsDatum();
@@ -44,6 +46,10 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         setLblMinEpost();
         setLblMinAvdelning();
         setLblMinAdress();
+        
+       
+       
+        
     }
     public void listaOverKollegor(){
 try{
@@ -56,8 +62,23 @@ try{
     System.out.println(ex.getMessage());
 }
     }
+    public void listaOverHallbarhetsmal(){
+try{
+     ArrayList<String> hallbarhetsmal =  idb.fetchColumn("SELECT concat(namn,' ,Beskrivning: ',beskrivning,' ,Prioritet: ',prioritet,' ,Målnummer: ',malnummer) from hallbarhetsmal");
+     DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+            for(String a : hallbarhetsmal){
+                overforingsLista.addElement(a);
+            overforingsLista.addElement(" ");}
+            listaHallbarhetsmal.setModel(overforingsLista);
+}catch(InfException ex){
+    System.out.println(ex.getMessage());
+}
+    }
+    
     public void listaOverProjektAvdelning(){
-       try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
+        String sqlFraga = "SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))";
+        System.out.println(sqlFraga);
+       try{ ArrayList<String> anstallda = idb.fetchColumn(sqlFraga);
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
         for(String a : anstallda){
                 overforingsLista.addElement(a);
@@ -162,7 +183,9 @@ try{
         lblMinTelefon = new javax.swing.JLabel();
         lblMittAnstallningsDatum = new javax.swing.JLabel();
         btnAndraMinaUppgifter = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        tabHallbarhetsmal = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        listaHallbarhetsmal = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -439,18 +462,29 @@ try{
 
         tabHuvudtabHandlaggare.addTab("Mina Uppgifter", tabMinaUppgifter);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+        listaHallbarhetsmal.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(listaHallbarhetsmal);
+
+        javax.swing.GroupLayout tabHallbarhetsmalLayout = new javax.swing.GroupLayout(tabHallbarhetsmal);
+        tabHallbarhetsmal.setLayout(tabHallbarhetsmalLayout);
+        tabHallbarhetsmalLayout.setHorizontalGroup(
+            tabHallbarhetsmalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabHallbarhetsmalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 302, Short.MAX_VALUE)
+        tabHallbarhetsmalLayout.setVerticalGroup(
+            tabHallbarhetsmalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabHallbarhetsmalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE))
         );
 
-        tabHuvudtabHandlaggare.addTab("tab4", jPanel1);
+        tabHuvudtabHandlaggare.addTab("Hållbarhetsmål", tabHallbarhetsmal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -485,9 +519,9 @@ try{
                 System.out.println(ex.getMessage());
 
             }
-            // TODO add your handling code here:
+            
     }//GEN-LAST:event_tfSokRutaHandlaggareActionPerformed
-
+    
     private void btnVisaAllaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAllaActionPerformed
         listaOverProjektAvdelning();        // TODO add your handling code here:
     }//GEN-LAST:event_btnVisaAllaActionPerformed
@@ -635,11 +669,11 @@ new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add 
     private javax.swing.JButton btnVisaAvslutade;
     private javax.swing.JButton btnVisaPagaende;
     private javax.swing.JButton btnVisaPlanerade;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lblFelmeddelandeProjSok;
     private javax.swing.JLabel lblFelmeddelandeSokning;
     private javax.swing.JLabel lblKollegorListTitel;
@@ -659,9 +693,11 @@ new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add 
     private javax.swing.JList<String> listMinaProjekt;
     private javax.swing.JList<String> listProjektDuLeder;
     private javax.swing.JList<String> listaAnstallda;
+    private javax.swing.JList<String> listaHallbarhetsmal;
     private javax.swing.JList<String> listaPartnersIDinaProjekt;
     private javax.swing.JList<String> listaProjektAvdelningHandlaggare;
     private javax.swing.JTextField sokRutaProjektHandlaggare;
+    private javax.swing.JPanel tabHallbarhetsmal;
     private javax.swing.JTabbedPane tabHuvudtabHandlaggare;
     private javax.swing.JPanel tabMinAvdelning;
     private javax.swing.JPanel tabMinaProjekt;
