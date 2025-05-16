@@ -204,7 +204,7 @@ public class AndraMinaUppgifter extends javax.swing.JFrame {
         String sql = "UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + 
                 efternamn + "',adress = '" + adress + "', epost = '" + epost + "', telefon = '"
                 + telefon + "', anstallningsdatum = '" + anstDatum + "', losenord = '" + losen
-                + "', avdelning = '" + avdelning + "WHERE aid = " + uppgifterna;
+                + "', avdelning = '" + avdelning + "' WHERE aid = " + uppgifterna;
         idb.update(sql);
         JOptionPane.showMessageDialog(null, "Uppgifterna har uppdaterats!");
     }
