@@ -5,6 +5,7 @@
 package projekt;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -187,6 +188,34 @@ public class PartnerUppgifter extends javax.swing.JFrame {
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
         // TODO add your handling code here:
         
+        String partnerId = tfPartnerId.getText();
+        String namn = tfNamn.getText();
+        String kontaktperson = tfKontaktperson.getText();
+        String kontaktepost = tfKontaktEpost.getText();
+        String telefon = tfTelefon.getText();
+        String adress = tfAdress.getText();
+        String branch = tfBranch.getText();
+        String stad = tfStad.getText();
+        
+        if(!Validering.isOnlyLetters(namn) && !Validering.isValidEpost(kontaktepost) && !Validering.isOnlyLetters(stad) 
+                && !Validering.isOnlyLetters(kontaktperson))
+        {
+            return;
+        }
+        
+        try
+        {
+            String sql = "UPDATE partner SET partnerId = '" + partnerId + "', namn = '" + namn + "', kontaktperson = '" + 
+                    kontaktepost + "', telefon = '" + telefon + "', adress = '" + adress + "', branch = '" + branch + 
+                    "', stad = '" + stad + "' WHERE pid = " + partnerUppgifter;
+            idb.update(sql);
+            JOptionPane.showMessageDialog(null, "Uppgifterna har uppdaterats!");
+        }
+        
+        catch (InfException ex)
+        {
+            JOptionPane.showMessageDialog(null, "Något gick fel: " + ex.getMessage());
+        }
         
     }//GEN-LAST:event_btnSparaActionPerformed
 
