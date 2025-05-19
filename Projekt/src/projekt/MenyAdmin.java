@@ -3,32 +3,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projekt;
+
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import java.awt.Color;
+
 /**
  *
  * @author elisl
  */
 public class MenyAdmin extends javax.swing.JFrame {
+
     private InfDB idb;
     private String inloggadAnvandare;
 
     /**
      * Creates new form
      */
-    public MenyAdmin(InfDB idb,String inloggadAnvandare) {
-     
+    public MenyAdmin(InfDB idb, String inloggadAnvandare) {
+
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
         initComponents();
         lblInloggadAnvandare.setText(inloggadAnvandare);
         listaOverProjekt();
-       
-                
-                
-        
+        listaOverLander();
+
     }
 
     /**
@@ -47,9 +49,14 @@ public class MenyAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaProjekt = new javax.swing.JList<>();
         tfProjektID = new javax.swing.JTextField();
-        btnProjektSok = new javax.swing.JButton();
+        btnProjektHamtaUppgifter = new javax.swing.JButton();
         lblAllaProjekt = new javax.swing.JLabel();
         panelLänder = new javax.swing.JPanel();
+        lblAllaLander = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaLander = new javax.swing.JList<>();
+        btnLandHamtaUppgifter = new javax.swing.JButton();
+        tfLandID = new javax.swing.JTextField();
         panelPartners = new javax.swing.JPanel();
         panelAvdelningar = new javax.swing.JPanel();
         panelAnvandare = new javax.swing.JPanel();
@@ -76,17 +83,27 @@ public class MenyAdmin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaProjekt);
 
-        tfProjektID.setText("Projekt ID");
+        tfProjektID.setColumns(10);
+        tfProjektID.setForeground(Color.GRAY);
+        tfProjektID.setText("Ange Projekt-ID");
+        tfProjektID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfProjektIDFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfProjektIDFocusLost(evt);
+            }
+        });
         tfProjektID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfProjektIDActionPerformed(evt);
             }
         });
 
-        btnProjektSok.setText("Sök");
-        btnProjektSok.addActionListener(new java.awt.event.ActionListener() {
+        btnProjektHamtaUppgifter.setText("Hämta uppgifter");
+        btnProjektHamtaUppgifter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProjektSokActionPerformed(evt);
+                btnProjektHamtaUppgifterActionPerformed(evt);
             }
         });
 
@@ -98,11 +115,11 @@ public class MenyAdmin extends javax.swing.JFrame {
             panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProjektLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1)
-                    .addComponent(tfProjektID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAllaProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(btnProjektSok, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfProjektID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(btnProjektHamtaUppgifter, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(346, Short.MAX_VALUE))
         );
         panelProjektLayout.setVerticalGroup(
@@ -110,26 +127,75 @@ public class MenyAdmin extends javax.swing.JFrame {
             .addGroup(panelProjektLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(lblAllaProjekt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfProjektID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProjektSok)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addComponent(btnProjektHamtaUppgifter)
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Projekt", panelProjekt);
+
+        lblAllaLander.setText("Alla länder:");
+
+        listaLander.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(listaLander);
+
+        btnLandHamtaUppgifter.setText("Hämta uppgifter");
+        btnLandHamtaUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLandHamtaUppgifterActionPerformed(evt);
+            }
+        });
+
+        tfLandID.setColumns(10);
+        tfLandID.setForeground(Color.GRAY);
+        tfLandID.setText("Ange Land-ID");
+        tfLandID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfLandIDFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfLandIDFocusLost(evt);
+            }
+        });
+        tfLandID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfLandIDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLänderLayout = new javax.swing.GroupLayout(panelLänder);
         panelLänder.setLayout(panelLänderLayout);
         panelLänderLayout.setHorizontalGroup(
             panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGroup(panelLänderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAllaLander)
+                    .addComponent(tfLandID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLandHamtaUppgifter))
+                .addGap(346, 346, 346))
         );
         panelLänderLayout.setVerticalGroup(
             panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 356, Short.MAX_VALUE)
+            .addGroup(panelLänderLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblAllaLander)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfLandID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(btnLandHamtaUppgifter)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Länder", panelLänder);
@@ -178,8 +244,9 @@ public class MenyAdmin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(menyAdminHuvudPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(60, 60, 60)
                 .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -192,42 +259,113 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- public void listaOverProjekt(){
-       try{ ArrayList<String> allaProjekt = idb.fetchColumn("SELECT concat(projektnamn, ', ',pid) from projekt");
-       DefaultListModel<String> overforingsLista = new DefaultListModel<>();
-        for(String a : allaProjekt){
+ public void listaOverProjekt() {
+        try {
+            ArrayList<String> allaProjekt = idb.fetchColumn("SELECT concat(projektnamn, ', Projekt-ID: ',pid) from projekt");
+            DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+
+            for (String a : allaProjekt) {
                 overforingsLista.addElement(a);
-        System.out.println(a);}
-        listaProjekt.setModel(overforingsLista);
-    }catch(InfException ex){
-        System.out.println(ex.getMessage());
-    }}
-    
-    
-    
+                System.out.println(a);
+            }
+            listaProjekt.setModel(overforingsLista);
+
+        } catch (InfException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void listaOverLander() {
+        try {
+            ArrayList<String> allaLander = idb.fetchColumn("SELECT concat(namn, ', Land-ID: ',lid) from land");
+            DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+
+            for (String lander : allaLander) {
+                overforingsLista.addElement(lander);
+                System.out.println(lander);
+            }
+            listaLander.setModel(overforingsLista);
+
+        } catch (InfException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+
     private void tfProjektIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProjektIDActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tfProjektIDActionPerformed
 
-    private void btnProjektSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektSokActionPerformed
-        // TODO add your handling code here:
+    private void btnProjektHamtaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektHamtaUppgifterActionPerformed
+
         String projektID = tfProjektID.getText();
-        
+
         try {
-            String sqlFraga = "SELECT pid FROM projekt WHERE pid = "+ projektID;
+            String sqlFraga = "SELECT pid FROM projekt WHERE pid = " + projektID;
             System.out.println(sqlFraga);
             String pidFinns = idb.fetchSingle(sqlFraga);
-            if(projektID.equals(pidFinns)){
-                
-            new ProjektDetaljer(idb,pidFinns).setVisible(true);
+            if (projektID.equals(pidFinns)) {
+
+                new ProjektDetaljer(idb, pidFinns).setVisible(true);
             }
-        }
-        
-        catch(InfException ex){
-        System.out.println(ex.getMessage());
+        } catch (InfException ex) {
+            System.out.println(ex.getMessage());
 
         }
-    }//GEN-LAST:event_btnProjektSokActionPerformed
+    }//GEN-LAST:event_btnProjektHamtaUppgifterActionPerformed
+
+    private void btnLandHamtaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandHamtaUppgifterActionPerformed
+
+        String landID = tfLandID.getText();
+
+        try {
+            String sqlFraga = "SELECT lid FROM land WHERE lid = " + landID;
+            System.out.println(sqlFraga);
+            String lidFinns = idb.fetchSingle(sqlFraga);
+            if (landID.equals(lidFinns)) {
+
+                new LandDetaljer(idb, lidFinns).setVisible(true);
+            }
+        } catch (InfException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_btnLandHamtaUppgifterActionPerformed
+
+    private void tfLandIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLandIDActionPerformed
+
+    }//GEN-LAST:event_tfLandIDActionPerformed
+
+    private void tfLandIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLandIDFocusGained
+
+        if (tfLandID.getText().equals("Ange Land-ID")) {
+            tfLandID.setText("");
+            tfLandID.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfLandIDFocusGained
+
+    private void tfLandIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLandIDFocusLost
+
+        if (tfLandID.getText().isEmpty()) {
+            tfLandID.setText("Ange Land-ID");
+            tfLandID.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_tfLandIDFocusLost
+
+    private void tfProjektIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfProjektIDFocusGained
+
+        if (tfProjektID.getText().equals("Ange Projekt-ID")) {
+            tfProjektID.setText("");
+            tfProjektID.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfProjektIDFocusGained
+
+    private void tfProjektIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfProjektIDFocusLost
+
+        if (tfProjektID.getText().isEmpty()) {
+            tfProjektID.setText("Ange Projekt-ID");
+            tfProjektID.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_tfProjektIDFocusLost
 
     /**
      * @param args the command line arguments
@@ -258,18 +396,22 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run(){
-               // new Meny().setVisible(true);
+            public void run() {
+                // new Meny().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnProjektSok;
+    private javax.swing.JButton btnLandHamtaUppgifter;
+    private javax.swing.JButton btnProjektHamtaUppgifter;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblAllaLander;
     private javax.swing.JLabel lblAllaProjekt;
     private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JList<String> listaLander;
     private javax.swing.JList<String> listaProjekt;
     private javax.swing.JTabbedPane menyAdminHuvudPanel;
     private javax.swing.JPanel panelAnvandare;
@@ -277,6 +419,7 @@ public class MenyAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel panelLänder;
     private javax.swing.JPanel panelPartners;
     private javax.swing.JPanel panelProjekt;
+    private javax.swing.JTextField tfLandID;
     private javax.swing.JTextField tfProjektID;
     // End of variables declaration//GEN-END:variables
 
