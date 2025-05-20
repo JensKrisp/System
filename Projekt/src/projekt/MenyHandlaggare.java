@@ -174,6 +174,9 @@ try{
         lblSokHandlaggare = new javax.swing.JLabel();
         tfSokRutaHandlaggare = new javax.swing.JTextField();
         lblFelmeddelandeSokning = new javax.swing.JLabel();
+        tfStartdatum = new javax.swing.JTextField();
+        tfSlutdatum = new javax.swing.JTextField();
+        btnSokEfterDatum = new javax.swing.JButton();
         tabMinaUppgifter = new javax.swing.JPanel();
         lblMittnamn = new javax.swing.JLabel();
         lblMinEpost = new javax.swing.JLabel();
@@ -336,6 +339,17 @@ try{
         lblFelmeddelandeSokning.setForeground(new java.awt.Color(51, 51, 51));
         lblFelmeddelandeSokning.setText("Hittade ingen, skriv om frågan");
 
+        tfStartdatum.setText("Startdatum");
+
+        tfSlutdatum.setText("Slutdatum");
+
+        btnSokEfterDatum.setText("Visa Projekt efter datum");
+        btnSokEfterDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokEfterDatumActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tabMinAvdelningLayout = new javax.swing.GroupLayout(tabMinAvdelning);
         tabMinAvdelning.setLayout(tabMinAvdelningLayout);
         tabMinAvdelningLayout.setHorizontalGroup(
@@ -358,12 +372,17 @@ try{
                             .addComponent(lblProjektAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnVisaPagaende)
-                            .addComponent(btnVisaPlanerade)
-                            .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnVisaAlla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnVisaAvslutade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(174, Short.MAX_VALUE))
+                            .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnVisaPagaende, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnVisaPlanerade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSokEfterDatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnVisaAlla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnVisaAvslutade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(tabMinAvdelningLayout.createSequentialGroup()
+                                .addComponent(tfStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)
+                                .addComponent(tfSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         tabMinAvdelningLayout.setVerticalGroup(
             tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,7 +392,7 @@ try{
                     .addComponent(lblKollegorListTitel)
                     .addComponent(lblProjektAvdelning))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AnstalldaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tabMinAvdelningLayout.createSequentialGroup()
@@ -383,14 +402,20 @@ try{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVisaAvslutade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVisaAlla)))
+                        .addComponent(btnVisaAlla)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSokHandlaggare)
+                .addGroup(tabMinAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSokHandlaggare)
+                    .addComponent(btnSokEfterDatum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfSokRutaHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblFelmeddelandeSokning)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         tabHuvudtabHandlaggare.addTab("Min Avdelning", tabMinAvdelning);
@@ -592,6 +617,26 @@ try{
     private void btnAndraMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraMinaUppgifterActionPerformed
 new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAndraMinaUppgifterActionPerformed
+
+    private void btnSokEfterDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokEfterDatumActionPerformed
+        String startDatum = tfStartdatum.getText();
+        String slutDatum = tfSlutdatum.getText();
+    if(Validering.isValidDatum(startDatum)){
+            System.out.println("Startdatum korrekt format");
+        if(Validering.isValidDatum(slutDatum)){
+        System.out.println("slutdatum korrekt format");
+         try{ ArrayList<String> projekt = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where startdatum >'"+startDatum+"' and slutdatum <'"+slutDatum+"' and pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where avdelning ="+anvandarensAvdelning+"))");
+            DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+            for(String a : projekt){
+                overforingsLista.addElement(a);
+                System.out.println(a);}
+            listaProjektAvdelningHandlaggare.setModel(overforingsLista);
+        }catch(InfException ex){
+            System.out.println(ex.getMessage());
+        }
+        }else{System.out.println("slutdatum fel format");}
+    }else{System.out.println("startdatum fel format");}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSokEfterDatumActionPerformed
     private void listaMinaProjekt(){
  try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
@@ -665,6 +710,7 @@ new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane AnstalldaScrollPane;
     private javax.swing.JButton btnAndraMinaUppgifter;
+    private javax.swing.JButton btnSokEfterDatum;
     private javax.swing.JButton btnVisaAlla;
     private javax.swing.JButton btnVisaAvslutade;
     private javax.swing.JButton btnVisaPagaende;
@@ -702,6 +748,8 @@ new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add 
     private javax.swing.JPanel tabMinAvdelning;
     private javax.swing.JPanel tabMinaProjekt;
     private javax.swing.JPanel tabMinaUppgifter;
+    private javax.swing.JTextField tfSlutdatum;
     private javax.swing.JTextField tfSokRutaHandlaggare;
+    private javax.swing.JTextField tfStartdatum;
     // End of variables declaration//GEN-END:variables
 }
