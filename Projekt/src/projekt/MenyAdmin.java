@@ -447,11 +447,14 @@ public class MenyAdmin extends javax.swing.JFrame {
             String pidFinns = idb.fetchSingle(sqlFraga);
             if (partnerID.equals(pidFinns)) {
 
-                new LandDetaljer(idb, pidFinns).setVisible(true);
+                new PartnerUppgifter(idb, pidFinns).setVisible(true);
             }
         } catch (InfException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        PartnerUppgifter infoRuta = new PartnerUppgifter(idb, partnerID);
+        infoRuta.setVisible(true);
     }//GEN-LAST:event_btnPartnerHamtaUppgifterActionPerformed
 
     private void tfPartnerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPartnerIDActionPerformed
