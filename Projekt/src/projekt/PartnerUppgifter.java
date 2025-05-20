@@ -197,8 +197,8 @@ public class PartnerUppgifter extends javax.swing.JFrame {
         String branch = tfBranch.getText();
         String stad = tfStad.getText();
         
-        if(!Validering.isOnlyLetters(namn) && !Validering.isValidEpost(kontaktepost) && !Validering.isOnlyLetters(stad) 
-                && !Validering.isOnlyLetters(kontaktperson))
+        if(!Validering.isOnlyLetters(namn) || !Validering.isValidEpost(kontaktepost)|| !Validering.isHeltal(tfStad) 
+                || !Validering.isOnlyLetters(kontaktperson))
         {
             return;
         }

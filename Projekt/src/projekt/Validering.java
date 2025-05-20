@@ -95,7 +95,7 @@ public class Validering {
         
         boolean resultat = true;
     {
-        String letterRegex = "^[A-Za-zÅÄÖåäö]+$";
+        String letterRegex = "^[A-Za-zÅÄÖåäö ]+$";
         if (!letter.matches(letterRegex)) {
             JOptionPane.showMessageDialog(null, "Inmatningsrutan får endast innehålla bokstäver");
             resultat = false;
