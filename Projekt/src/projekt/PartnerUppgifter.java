@@ -205,9 +205,9 @@ public class PartnerUppgifter extends javax.swing.JFrame {
         
         try
         {
-            String sql = "UPDATE partner SET partnerId = '" + partnerId + "', namn = '" + namn + "', kontaktperson = '" + 
-                    kontaktepost + "', telefon = '" + telefon + "', adress = '" + adress + "', branch = '" + branch + 
-                    "', stad = '" + stad + "' WHERE pid = " + partnerUppgifter;
+            String sql = "UPDATE partner SET namn = '" + namn + "', kontaktperson = '" + 
+                    kontaktperson + "', telefon = '" + telefon + "', adress = '" + adress + "', branch = '" + branch + 
+                    "', stad = '" + stad + "',kontaktepost='"+kontaktepost+"' WHERE pid = " + partnerUppgifter;
             idb.update(sql);
             JOptionPane.showMessageDialog(null, "Uppgifterna har uppdaterats!");
         }

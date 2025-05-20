@@ -453,8 +453,7 @@ public class MenyAdmin extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
         
-        PartnerUppgifter infoRuta = new PartnerUppgifter(idb, partnerID);
-        infoRuta.setVisible(true);
+       
     }//GEN-LAST:event_btnPartnerHamtaUppgifterActionPerformed
 
     private void tfPartnerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPartnerIDActionPerformed
