@@ -249,16 +249,22 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnVisaPagaende" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnVisaPlanerade" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnVisaPagaende" max="32767" attributes="0"/>
+                                      <Component id="btnVisaPlanerade" max="32767" attributes="0"/>
+                                      <Component id="btnSokEfterDatum" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnVisaAlla" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnVisaAvslutade" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="tfStartdatum" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="tfSlutdatum" min="-2" pref="69" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="174" max="32767" attributes="0"/>
+                      <EmptySpace pref="164" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -271,7 +277,7 @@
                           <Component id="lblProjektAvdelning" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="AnstalldaScrollPane" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
@@ -282,15 +288,23 @@
                               <Component id="btnVisaAvslutade" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnVisaAlla" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="tfStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfSlutdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblSokHandlaggare" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSokHandlaggare" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSokEfterDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tfSokRutaHandlaggare" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblFelmeddelandeSokning" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -411,6 +425,24 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hittade ingen, skriv om fr&#xe5;gan"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfStartdatum">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Startdatum"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfSlutdatum">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Slutdatum"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnSokEfterDatum">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Visa Projekt efter datum"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokEfterDatumActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
