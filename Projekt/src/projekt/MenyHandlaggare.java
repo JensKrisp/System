@@ -160,6 +160,8 @@ try{
         sokRutaProjektHandlaggare = new javax.swing.JTextField();
         lblSokRutaProjektHandlaggare = new javax.swing.JLabel();
         lblFelmeddelandeProjSok = new javax.swing.JLabel();
+        tfSokPaPartner = new javax.swing.JTextField();
+        lblSokPaPartner = new javax.swing.JLabel();
         tabMinAvdelning = new javax.swing.JPanel();
         AnstalldaScrollPane = new javax.swing.JScrollPane();
         listaAnstallda = new javax.swing.JList<>();
@@ -230,6 +232,15 @@ try{
 
         lblFelmeddelandeProjSok.setText("Det blev fel, vänligen skriv in projektID.");
 
+        tfSokPaPartner.setText("PartnerID");
+        tfSokPaPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSokPaPartnerActionPerformed(evt);
+            }
+        });
+
+        lblSokPaPartner.setText("Sök på partner");
+
         javax.swing.GroupLayout tabMinaProjektLayout = new javax.swing.GroupLayout(tabMinaProjekt);
         tabMinaProjekt.setLayout(tabMinaProjektLayout);
         tabMinaProjektLayout.setHorizontalGroup(
@@ -237,23 +248,26 @@ try{
             .addGroup(tabMinaProjektLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFelmeddelandeProjSok)
                     .addGroup(tabMinaProjektLayout.createSequentialGroup()
-                        .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(tabMinaProjektLayout.createSequentialGroup()
-                                .addComponent(lblMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblProjektDuLeder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(tabMinaProjektLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                                    .addComponent(lblMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblProjektDuLeder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(tabMinaProjektLayout.createSequentialGroup()
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfSokPaPartner, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblPartnersTillDinaProjekt)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblSokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFelmeddelandeProjSok))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSokPaPartner, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         tabMinaProjektLayout.setVerticalGroup(
@@ -270,9 +284,13 @@ try{
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
-                .addComponent(lblSokRutaProjektHandlaggare)
+                .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSokRutaProjektHandlaggare)
+                    .addComponent(lblSokPaPartner))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfSokPaPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblFelmeddelandeProjSok)
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -637,6 +655,23 @@ new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add 
         }else{System.out.println("slutdatum fel format");}
     }else{System.out.println("startdatum fel format");}        // TODO add your handling code here:
     }//GEN-LAST:event_btnSokEfterDatumActionPerformed
+
+    private void tfSokPaPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSokPaPartnerActionPerformed
+String partnerID = tfSokPaPartner.getText();
+        try {
+            String sqlFraga = "SELECT pid FROM partner WHERE pid = " + partnerID;
+            System.out.println(sqlFraga);
+            String pidFinns = idb.fetchSingle(sqlFraga);
+            if (partnerID.equals(pidFinns)) {
+
+                new VisaPartnerUppgifter(idb, pidFinns).setVisible(true);
+            }
+        } catch (InfException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+              // TODO add your handling code here:
+    }//GEN-LAST:event_tfSokPaPartnerActionPerformed
     private void listaMinaProjekt(){
  try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
@@ -662,7 +697,7 @@ new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add 
     }
     
     private void listaPartnersTillMinaProjekt(){
-        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(namn,', kontaktperson:',kontaktperson,', Telefon:',telefon) from partner where pid in(SELECT projekt.pid from projekt join ans_proj on projekt.pid=ans_proj.pid where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
+        try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat('PartnerID: ',pid,' Namn: ', namn,', kontaktperson:',kontaktperson,', Telefon:',telefon) from partner where pid in(SELECT projekt.pid from projekt join ans_proj on projekt.pid=ans_proj.pid where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
         for(String a : anstallda){
                 overforingsLista.addElement(a);
@@ -735,6 +770,7 @@ new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add 
     private javax.swing.JLabel lblProjektAvdelning;
     private javax.swing.JLabel lblProjektDuLeder;
     private javax.swing.JLabel lblSokHandlaggare;
+    private javax.swing.JLabel lblSokPaPartner;
     private javax.swing.JLabel lblSokRutaProjektHandlaggare;
     private javax.swing.JList<String> listMinaProjekt;
     private javax.swing.JList<String> listProjektDuLeder;
@@ -749,6 +785,7 @@ new AndraMinaUppgifter(idb,anvandarensAID).setVisible(true);        // TODO add 
     private javax.swing.JPanel tabMinaProjekt;
     private javax.swing.JPanel tabMinaUppgifter;
     private javax.swing.JTextField tfSlutdatum;
+    private javax.swing.JTextField tfSokPaPartner;
     private javax.swing.JTextField tfSokRutaHandlaggare;
     private javax.swing.JTextField tfStartdatum;
     // End of variables declaration//GEN-END:variables
