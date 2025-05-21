@@ -61,13 +61,18 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="lblProjektDuLeder" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jScrollPane2" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jScrollPane2" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                              <Component id="sokRutaProjektHandlaggare" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane3" min="-2" pref="79" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="btnLedarInfo" max="32767" attributes="0"/>
+                                              <Component id="jScrollPane3" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="sokRutaProjektHandlaggare" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblSokRutaProjektHandlaggare" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -79,7 +84,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="183" max="32767" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -107,10 +112,11 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="sokRutaProjektHandlaggare" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfSokPaPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLedarInfo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblFelmeddelandeProjSok" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -236,6 +242,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="S&#xf6;k p&#xe5; partner"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnLedarInfo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hantera samarbeten"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLedarInfoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

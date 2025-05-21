@@ -162,6 +162,7 @@ try{
         lblFelmeddelandeProjSok = new javax.swing.JLabel();
         tfSokPaPartner = new javax.swing.JTextField();
         lblSokPaPartner = new javax.swing.JLabel();
+        btnLedarInfo = new javax.swing.JButton();
         tabMinAvdelning = new javax.swing.JPanel();
         AnstalldaScrollPane = new javax.swing.JScrollPane();
         listaAnstallda = new javax.swing.JList<>();
@@ -241,6 +242,13 @@ try{
 
         lblSokPaPartner.setText("Sök på partner");
 
+        btnLedarInfo.setText("Hantera samarbeten");
+        btnLedarInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLedarInfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tabMinaProjektLayout = new javax.swing.GroupLayout(tabMinaProjekt);
         tabMinaProjekt.setLayout(tabMinaProjektLayout);
         tabMinaProjektLayout.setHorizontalGroup(
@@ -257,10 +265,13 @@ try{
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(lblProjektDuLeder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(tabMinaProjektLayout.createSequentialGroup()
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnLedarInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane3))))
                             .addComponent(lblSokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +279,7 @@ try{
                             .addComponent(lblPartnersTillDinaProjekt)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSokPaPartner, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         tabMinaProjektLayout.setVerticalGroup(
             tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,10 +301,11 @@ try{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabMinaProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sokRutaProjektHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfSokPaPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfSokPaPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLedarInfo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblFelmeddelandeProjSok)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         tabHuvudtabHandlaggare.addTab("Mina Projekt", tabMinaProjekt);
@@ -672,6 +684,10 @@ String partnerID = tfSokPaPartner.getText();
         
               // TODO add your handling code here:
     }//GEN-LAST:event_tfSokPaPartnerActionPerformed
+
+    private void btnLedarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLedarInfoActionPerformed
+       new HanteraProjektProjektledare(idb,anvandarensAID).setVisible(true);
+    }//GEN-LAST:event_btnLedarInfoActionPerformed
     private void listaMinaProjekt(){
  try{ ArrayList<String> anstallda = idb.fetchColumn("SELECT concat(projektnamn, ', ',status) from projekt where pid in(SELECT pid from ans_proj where aid in(SELECT aid from anstalld where epost ='"+inloggadAnvandare+"'))");
        DefaultListModel<String> overforingsLista = new DefaultListModel<>();
@@ -745,6 +761,7 @@ String partnerID = tfSokPaPartner.getText();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane AnstalldaScrollPane;
     private javax.swing.JButton btnAndraMinaUppgifter;
+    private javax.swing.JButton btnLedarInfo;
     private javax.swing.JButton btnSokEfterDatum;
     private javax.swing.JButton btnVisaAlla;
     private javax.swing.JButton btnVisaAvslutade;
