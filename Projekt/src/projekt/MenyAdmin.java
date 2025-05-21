@@ -52,18 +52,21 @@ public class MenyAdmin extends javax.swing.JFrame {
         tfProjektID = new javax.swing.JTextField();
         btnProjektHamtaUppgifter = new javax.swing.JButton();
         lblAllaProjekt = new javax.swing.JLabel();
+        btnLaggTillProjekt = new javax.swing.JButton();
         panelLänder = new javax.swing.JPanel();
         lblAllaLander = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaLander = new javax.swing.JList<>();
         btnLandHamtaUppgifter = new javax.swing.JButton();
         tfLandID = new javax.swing.JTextField();
+        btnLaggTillLänder = new javax.swing.JButton();
         panelPartners = new javax.swing.JPanel();
         lblAllaPartners = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listaPartners = new javax.swing.JList<>();
         tfPartnerID = new javax.swing.JTextField();
         btnPartnerHamtaUppgifter = new javax.swing.JButton();
+        btnLaggTillPartner = new javax.swing.JButton();
         panelAvdelningar = new javax.swing.JPanel();
         panelAnvandare = new javax.swing.JPanel();
 
@@ -115,18 +118,29 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         lblAllaProjekt.setText("Alla projekt:");
 
+        btnLaggTillProjekt.setText("Lägg till nytt projekt");
+        btnLaggTillProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillProjektActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelProjektLayout = new javax.swing.GroupLayout(panelProjekt);
         panelProjekt.setLayout(panelProjektLayout);
         panelProjektLayout.setHorizontalGroup(
             panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProjektLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(tfProjektID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(btnProjektHamtaUppgifter, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addGroup(panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1)
+                        .addComponent(tfProjektID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                    .addGroup(panelProjektLayout.createSequentialGroup()
+                        .addComponent(btnProjektHamtaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnLaggTillProjekt)))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         panelProjektLayout.setVerticalGroup(
             panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,8 +152,10 @@ public class MenyAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfProjektID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProjektHamtaUppgifter)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGroup(panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProjektHamtaUppgifter)
+                    .addComponent(btnLaggTillProjekt))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Projekt", panelProjekt);
@@ -177,6 +193,13 @@ public class MenyAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnLaggTillLänder.setText("Lägg till nytt land");
+        btnLaggTillLänder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillLänderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLänderLayout = new javax.swing.GroupLayout(panelLänder);
         panelLänder.setLayout(panelLänderLayout);
         panelLänderLayout.setHorizontalGroup(
@@ -187,8 +210,11 @@ public class MenyAdmin extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAllaLander)
                     .addComponent(tfLandID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLandHamtaUppgifter))
-                .addGap(346, 346, 346))
+                    .addGroup(panelLänderLayout.createSequentialGroup()
+                        .addComponent(btnLandHamtaUppgifter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLaggTillLänder, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(220, 220, 220))
         );
         panelLänderLayout.setVerticalGroup(
             panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,8 +226,10 @@ public class MenyAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfLandID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(btnLandHamtaUppgifter)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGroup(panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLandHamtaUppgifter)
+                    .addComponent(btnLaggTillLänder))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Länder", panelLänder);
@@ -237,6 +265,13 @@ public class MenyAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnLaggTillPartner.setText("Lägg till ny partner");
+        btnLaggTillPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillPartnerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelPartnersLayout = new javax.swing.GroupLayout(panelPartners);
         panelPartners.setLayout(panelPartnersLayout);
         panelPartnersLayout.setHorizontalGroup(
@@ -248,7 +283,9 @@ public class MenyAdmin extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addComponent(tfPartnerID)
                     .addComponent(btnPartnerHamtaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         panelPartnersLayout.setVerticalGroup(
             panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +297,9 @@ public class MenyAdmin extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(tfPartnerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnPartnerHamtaUppgifter)
+                .addGroup(panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPartnerHamtaUppgifter)
+                    .addComponent(btnLaggTillPartner))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -476,6 +515,18 @@ public class MenyAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listaPartnersFocusLost
 
+    private void btnLaggTillProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillProjektActionPerformed
+       new skapaNyttProjekt(idb).setVisible(true);
+    }//GEN-LAST:event_btnLaggTillProjektActionPerformed
+
+    private void btnLaggTillLänderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillLänderActionPerformed
+        
+    }//GEN-LAST:event_btnLaggTillLänderActionPerformed
+
+    private void btnLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerActionPerformed
+     
+    }//GEN-LAST:event_btnLaggTillPartnerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -512,6 +563,9 @@ public class MenyAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLaggTillLänder;
+    private javax.swing.JButton btnLaggTillPartner;
+    private javax.swing.JButton btnLaggTillProjekt;
     private javax.swing.JButton btnLandHamtaUppgifter;
     private javax.swing.JButton btnPartnerHamtaUppgifter;
     private javax.swing.JButton btnProjektHamtaUppgifter;
