@@ -31,6 +31,7 @@ public class MenyAdmin extends javax.swing.JFrame {
         listaOverProjekt();
         listaOverLander();
         listaOverPartners();
+        listaAvdelningarna();
 
     }
 
@@ -68,6 +69,10 @@ public class MenyAdmin extends javax.swing.JFrame {
         btnPartnerHamtaUppgifter = new javax.swing.JButton();
         btnLaggTillPartner = new javax.swing.JButton();
         panelAvdelningar = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listaAvdelningar = new javax.swing.JList<>();
+        tfHamtaAvdelning = new javax.swing.JTextField();
+        btnHamtaAvdelningsInfo = new javax.swing.JButton();
         panelAnvandare = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -306,15 +311,53 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         menyAdminHuvudPanel.addTab("Partners", panelPartners);
 
+        listaAvdelningar.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(listaAvdelningar);
+
+        tfHamtaAvdelning.setForeground(new java.awt.Color(204, 204, 204));
+        tfHamtaAvdelning.setText("Ange avdelning-ID");
+        tfHamtaAvdelning.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfHamtaAvdelningFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfHamtaAvdelningFocusLost(evt);
+            }
+        });
+
+        btnHamtaAvdelningsInfo.setText("Hämta");
+        btnHamtaAvdelningsInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHamtaAvdelningsInfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelAvdelningarLayout = new javax.swing.GroupLayout(panelAvdelningar);
         panelAvdelningar.setLayout(panelAvdelningarLayout);
         panelAvdelningarLayout.setHorizontalGroup(
             panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGroup(panelAvdelningarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4)
+                    .addComponent(tfHamtaAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                    .addComponent(btnHamtaAvdelningsInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(325, Short.MAX_VALUE))
         );
         panelAvdelningarLayout.setVerticalGroup(
             panelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 356, Short.MAX_VALUE)
+            .addGroup(panelAvdelningarLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tfHamtaAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnHamtaAvdelningsInfo)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Avdelningar", panelAvdelningar);
@@ -395,6 +438,22 @@ public class MenyAdmin extends javax.swing.JFrame {
                 System.out.println(partners);
             }
             listaPartners.setModel(overforingsLista);
+        } catch (InfException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void listaAvdelningarna(){
+        
+        try{
+            ArrayList<String> allaAvdelningar = idb.fetchColumn("SELECT concat(namn, ', Avdelnings-ID: ',avdid) from avdelning");
+            DefaultListModel<String> overforingsLista = new DefaultListModel<>();
+            
+            for(String avdelningar : allaAvdelningar) {
+                overforingsLista.addElement(avdelningar);
+                System.out.println(avdelningar);
+            }  
+         listaAvdelningar.setModel(overforingsLista);
         } catch (InfException ex) {
             System.out.println(ex.getMessage());
         }
@@ -526,6 +585,24 @@ public class MenyAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfPartnerIDFocusLost
 
+    private void btnHamtaAvdelningsInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHamtaAvdelningsInfoActionPerformed
+        new AvdelningDetaljer(idb).setVisible(true);
+    }//GEN-LAST:event_btnHamtaAvdelningsInfoActionPerformed
+
+    private void tfHamtaAvdelningFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfHamtaAvdelningFocusGained
+         if (tfHamtaAvdelning.getText().equals("Ange avdelning-ID")) {
+            tfHamtaAvdelning.setText("");
+            tfHamtaAvdelning.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfHamtaAvdelningFocusGained
+
+    private void tfHamtaAvdelningFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfHamtaAvdelningFocusLost
+         if (tfHamtaAvdelning.getText().isEmpty()) {
+            tfHamtaAvdelning.setText("Ange avdelning-ID");
+            tfHamtaAvdelning.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_tfHamtaAvdelningFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -562,6 +639,7 @@ public class MenyAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHamtaAvdelningsInfo;
     private javax.swing.JButton btnLaggTillLänder;
     private javax.swing.JButton btnLaggTillPartner;
     private javax.swing.JButton btnLaggTillProjekt;
@@ -572,10 +650,12 @@ public class MenyAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblAllaLander;
     private javax.swing.JLabel lblAllaPartners;
     private javax.swing.JLabel lblAllaProjekt;
     private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JList<String> listaAvdelningar;
     private javax.swing.JList<String> listaLander;
     private javax.swing.JList<String> listaPartners;
     private javax.swing.JList<String> listaProjekt;
@@ -585,6 +665,7 @@ public class MenyAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel panelLänder;
     private javax.swing.JPanel panelPartners;
     private javax.swing.JPanel panelProjekt;
+    private javax.swing.JTextField tfHamtaAvdelning;
     private javax.swing.JTextField tfLandID;
     private javax.swing.JTextField tfPartnerID;
     private javax.swing.JTextField tfProjektID;
