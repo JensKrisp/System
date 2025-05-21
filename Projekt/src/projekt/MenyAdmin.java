@@ -509,7 +509,7 @@ public class MenyAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLaggTillLänderActionPerformed
 
     private void btnLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerActionPerformed
-     
+        new LaggTillNyPartner(idb).setVisible(true);
     }//GEN-LAST:event_btnLaggTillPartnerActionPerformed
 
     private void tfPartnerIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPartnerIDFocusGained

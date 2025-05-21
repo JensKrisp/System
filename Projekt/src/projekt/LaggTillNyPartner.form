@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblPid" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblStadFelM" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPartnerNamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblKontaktperson" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblKontaktEpost" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTelefon" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAdress" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblBransch" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStad" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tfPartnerNamn" max="32767" attributes="0"/>
+                                  <Component id="tfKontaktperson" max="32767" attributes="0"/>
+                                  <Component id="tfKontaktEpost" max="32767" attributes="0"/>
+                                  <Component id="tfTelefon" max="32767" attributes="0"/>
+                                  <Component id="tfAdress" max="32767" attributes="0"/>
+                                  <Component id="tfBransch" max="32767" attributes="0"/>
+                                  <Component id="tfStad" pref="153" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnSkapaPartner" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btnSkapaPartner" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lblPid" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblPartnerNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfPartnerNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblKontaktperson" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfKontaktperson" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblKontaktEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfKontaktEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblBransch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfBransch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblStad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfStad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblStadFelM" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblPid">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Partner-ID:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPartnerNamn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Partnernamn:*"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblKontaktperson">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kontaktperson:*"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblKontaktEpost">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kontakt-epost:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTelefon">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefon:*"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdress">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adress:*"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBransch">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bransch:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stad:*"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPartnerNamn">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPartnerNamnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfKontaktperson">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfKontaktEpost">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfTelefon">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAdress">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfBransch">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfStad">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Skriv ID:t f&#xf6;r staden"/>
+      </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfStadFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfStadFocusLost"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSkapaPartner">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Skapa"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkapaPartnerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStadFelM">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Staden m&#xe5;ste finnas i databasen"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
