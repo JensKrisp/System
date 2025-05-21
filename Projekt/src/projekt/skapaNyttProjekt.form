@@ -31,7 +31,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -39,32 +39,32 @@
                                   <Component id="lblNamn" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="tfProjektNamn" max="32767" attributes="0"/>
+                              <Component id="tfProjektNamn" pref="74" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="lblBeskrivning" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="tfBeskrivning" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblStartdatum" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblFelMStartdatum" max="32767" attributes="0"/>
-                                  <Component id="tfStartdatum" max="32767" attributes="0"/>
+                                  <Component id="tfStartdatum" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="lblSlutdatum" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblFelMSlutdatum" alignment="1" pref="91" max="32767" attributes="0"/>
-                                  <Component id="tfSlutdatum" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblFelMSlutdatum" max="32767" attributes="0"/>
+                                  <Component id="tfSlutdatum" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblKostnad" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblStatus" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -149,12 +149,42 @@
     <Component class="javax.swing.JTextField" name="tfBeskrivning">
     </Component>
     <Component class="javax.swing.JTextField" name="tfStartdatum">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&#xc5;&#xc5;&#xc5;&#xc5;-MM-DD"/>
+      </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfStartdatumFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfStartdatumFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfSlutdatum">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&#xc5;&#xc5;&#xc5;&#xc5;-MM-DD"/>
+      </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfSlutdatumFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfSlutdatumFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfKostnad">
     </Component>
     <Component class="javax.swing.JTextField" name="tfProjektchef">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Anst&#xe4;llnings-ID"/>
+      </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfProjektchefFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfProjektchefFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfLand">
     </Component>

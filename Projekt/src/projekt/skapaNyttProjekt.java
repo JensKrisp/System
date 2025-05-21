@@ -19,9 +19,9 @@ public class skapaNyttProjekt extends javax.swing.JFrame {
      */
     public skapaNyttProjekt(InfDB idb){
         this.idb = idb;
+        initComponents();
         tilldelaVardeCBStatus();
         tilldelaVardeCBPrioritet();
-        initComponents();
         lblFelMStartdatum.setVisible(false);
         lblFelMSlutdatum.setVisible(false);
         lblProjektChefFelm.setVisible(false);
@@ -61,6 +61,39 @@ public class skapaNyttProjekt extends javax.swing.JFrame {
         lblProjektChefFelm = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tfStartdatum.setForeground(new java.awt.Color(204, 204, 204));
+        tfStartdatum.setText("ÅÅÅÅ-MM-DD");
+        tfStartdatum.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfStartdatumFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfStartdatumFocusLost(evt);
+            }
+        });
+
+        tfSlutdatum.setForeground(new java.awt.Color(204, 204, 204));
+        tfSlutdatum.setText("ÅÅÅÅ-MM-DD");
+        tfSlutdatum.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfSlutdatumFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfSlutdatumFocusLost(evt);
+            }
+        });
+
+        tfProjektchef.setForeground(new java.awt.Color(204, 204, 204));
+        tfProjektchef.setText("Anställnings-ID");
+        tfProjektchef.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfProjektchefFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfProjektchefFocusLost(evt);
+            }
+        });
 
         btnSkapaNyttProjekt.setText("Skapa");
         btnSkapaNyttProjekt.addActionListener(new java.awt.event.ActionListener() {
@@ -106,32 +139,32 @@ public class skapaNyttProjekt extends javax.swing.JFrame {
                         .addComponent(btnSkapaNyttProjekt)
                         .addGap(16, 16, 16))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblProjektID)
                                     .addComponent(lblNamn))
                                 .addGap(18, 18, 18)
-                                .addComponent(tfProjektNamn))
+                                .addComponent(tfProjektNamn, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblBeskrivning)
                                 .addGap(18, 18, 18)
                                 .addComponent(tfBeskrivning))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(lblStartdatum)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblFelMStartdatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tfStartdatum)))
+                                    .addComponent(tfStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(lblSlutdatum)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblFelMSlutdatum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                    .addComponent(tfSlutdatum, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(50, 50, 50)
+                                    .addComponent(lblFelMSlutdatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tfSlutdatum))))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblKostnad, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -226,6 +259,9 @@ public class skapaNyttProjekt extends javax.swing.JFrame {
             lblFelMSlutdatum.setVisible(true);
             textRutaOk = false;
         }
+        if (!Validering.isHeltal(tfKostnad)){
+            textRutaOk = false;
+        }
         //Individuell validering på textrutorna
         // Så att varje tf får egen dialogruta vid tomt fält. 
         if(!Validering.ejTomtFalt(tfProjektNamn)){ 
@@ -268,6 +304,48 @@ public class skapaNyttProjekt extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Något gick fel: " + ex.getMessage());
     }
     }//GEN-LAST:event_btnSkapaNyttProjektActionPerformed
+
+    private void tfStartdatumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfStartdatumFocusGained
+        if (tfStartdatum.getText().equals("ÅÅÅÅ-MM-DD")) {
+            tfStartdatum.setText("");
+            tfStartdatum.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfStartdatumFocusGained
+
+    private void tfStartdatumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfStartdatumFocusLost
+        if (tfStartdatum.getText().isEmpty()) {
+            tfStartdatum.setText("ÅÅÅÅ-MM-DD");
+            tfStartdatum.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_tfStartdatumFocusLost
+
+    private void tfSlutdatumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfSlutdatumFocusLost
+        if (tfSlutdatum.getText().isEmpty()) {
+            tfSlutdatum.setText("ÅÅÅÅ-MM-DD");
+            tfSlutdatum.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_tfSlutdatumFocusLost
+
+    private void tfSlutdatumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfSlutdatumFocusGained
+        if (tfSlutdatum.getText().equals("ÅÅÅÅ-MM-DD")) {
+            tfSlutdatum.setText("");
+            tfSlutdatum.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfSlutdatumFocusGained
+
+    private void tfProjektchefFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfProjektchefFocusGained
+        if (tfProjektchef.getText().equals("Anställnings-ID")) {
+            tfProjektchef.setText("");
+            tfProjektchef.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfProjektchefFocusGained
+
+    private void tfProjektchefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfProjektchefFocusLost
+        if (tfProjektchef.getText().isEmpty()) {
+            tfProjektchef.setText("Anställnings-ID");
+            tfProjektchef.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_tfProjektchefFocusLost
 
     public void tilldelaVardeCBStatus(){
         cbStatus.addItem("Planerat");

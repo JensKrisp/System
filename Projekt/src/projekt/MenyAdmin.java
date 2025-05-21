@@ -241,17 +241,18 @@ public class MenyAdmin extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        listaPartners.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                listaPartnersFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                listaPartnersFocusLost(evt);
-            }
-        });
         jScrollPane3.setViewportView(listaPartners);
 
+        tfPartnerID.setForeground(new java.awt.Color(204, 204, 204));
         tfPartnerID.setText("Ange Partner-ID");
+        tfPartnerID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPartnerIDFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfPartnerIDFocusLost(evt);
+            }
+        });
         tfPartnerID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfPartnerIDActionPerformed(evt);
@@ -499,24 +500,8 @@ public class MenyAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPartnerIDActionPerformed
 
-    private void listaPartnersFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listaPartnersFocusGained
-        // TODO add your handling code here:
-        if (tfPartnerID.getText().equals("Ange Partner-ID")) {
-            tfPartnerID.setText("");
-            tfPartnerID.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_listaPartnersFocusGained
-
-    private void listaPartnersFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listaPartnersFocusLost
-        // TODO add your handling code here:
-        if (tfPartnerID.getText().isEmpty()) {
-            tfPartnerID.setText("Ange Partner-ID");
-            tfPartnerID.setForeground(Color.GRAY);
-        }
-    }//GEN-LAST:event_listaPartnersFocusLost
-
     private void btnLaggTillProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillProjektActionPerformed
-       new skapaNyttProjekt(idb).setVisible(true);
+        new skapaNyttProjekt(idb).setVisible(true);
     }//GEN-LAST:event_btnLaggTillProjektActionPerformed
 
     private void btnLaggTillLänderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillLänderActionPerformed
@@ -526,6 +511,20 @@ public class MenyAdmin extends javax.swing.JFrame {
     private void btnLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerActionPerformed
      
     }//GEN-LAST:event_btnLaggTillPartnerActionPerformed
+
+    private void tfPartnerIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPartnerIDFocusGained
+        if (tfPartnerID.getText().equals("Ange Partner-ID")) {
+            tfPartnerID.setText("");
+            tfPartnerID.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfPartnerIDFocusGained
+
+    private void tfPartnerIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPartnerIDFocusLost
+       if (tfPartnerID.getText().isEmpty()) {
+            tfPartnerID.setText("Ange Partner-ID");
+            tfPartnerID.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_tfPartnerIDFocusLost
 
     /**
      * @param args the command line arguments
