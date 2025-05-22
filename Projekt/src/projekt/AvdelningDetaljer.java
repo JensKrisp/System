@@ -19,7 +19,7 @@ public class AvdelningDetaljer extends javax.swing.JFrame {
     /**
      * Creates new form AvdelningDetaljer
      */
-    public AvdelningDetaljer(InfDB idb) {
+    public AvdelningDetaljer(InfDB idb, String avdID) {
         this.idb = idb;
         initComponents();
     }

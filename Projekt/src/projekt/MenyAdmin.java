@@ -551,8 +551,6 @@ public class MenyAdmin extends javax.swing.JFrame {
         } catch (InfException ex) {
             System.out.println(ex.getMessage());
         }
-        
-       
     }//GEN-LAST:event_btnPartnerHamtaUppgifterActionPerformed
 
     private void tfPartnerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPartnerIDActionPerformed
@@ -586,7 +584,18 @@ public class MenyAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_tfPartnerIDFocusLost
 
     private void btnHamtaAvdelningsInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHamtaAvdelningsInfoActionPerformed
-        new AvdelningDetaljer(idb).setVisible(true);
+        String avdID = tfHamtaAvdelning.getText();
+        try {
+            String sqlFraga = "SELECT pid FROM partner WHERE pid = " + avdID;
+            System.out.println(sqlFraga);
+            String pidFinns = idb.fetchSingle(sqlFraga);
+            if (avdID.equals(pidFinns)) {
+
+                new AvdelningDetaljer(idb, pidFinns).setVisible(true);
+            }
+        } catch (InfException ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_btnHamtaAvdelningsInfoActionPerformed
 
     private void tfHamtaAvdelningFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfHamtaAvdelningFocusGained
