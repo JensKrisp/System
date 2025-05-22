@@ -32,7 +32,6 @@ public class MenyAdmin extends javax.swing.JFrame {
         listaOverLander();
         listaOverPartners();
         listaAvdelningarna();
-        listaAnstallda();
 
     }
 
@@ -75,27 +74,6 @@ public class MenyAdmin extends javax.swing.JFrame {
         tfHamtaAvdelning = new javax.swing.JTextField();
         btnHamtaAvdelningsInfo = new javax.swing.JButton();
         panelAnvandare = new javax.swing.JPanel();
-        lblLaggTillAnstalld = new javax.swing.JLabel();
-        lblFornamn = new javax.swing.JLabel();
-        lblEfternamn = new javax.swing.JLabel();
-        lblAdress = new javax.swing.JLabel();
-        lblEpost = new javax.swing.JLabel();
-        lblTelefon = new javax.swing.JLabel();
-        tfFornamn = new javax.swing.JTextField();
-        tfEfternamn = new javax.swing.JTextField();
-        tfAdress = new javax.swing.JTextField();
-        tfEpost = new javax.swing.JTextField();
-        lblAnstDatum = new javax.swing.JLabel();
-        lblAvdelning = new javax.swing.JLabel();
-        tfTelefon = new javax.swing.JTextField();
-        tfAnstDatum = new javax.swing.JTextField();
-        tfAvdelning = new javax.swing.JTextField();
-        btnSpara = new javax.swing.JButton();
-        lblTaBortAnstalld = new javax.swing.JLabel();
-        tfAngeAnstId = new javax.swing.JTextField();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        listaAnstalld = new javax.swing.JList<>();
-        btnTaBort = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,7 +160,7 @@ public class MenyAdmin extends javax.swing.JFrame {
                 .addGroup(panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProjektHamtaUppgifter)
                     .addComponent(btnLaggTillProjekt))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Projekt", panelProjekt);
@@ -256,7 +234,7 @@ public class MenyAdmin extends javax.swing.JFrame {
                 .addGroup(panelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLandHamtaUppgifter)
                     .addComponent(btnLaggTillLänder))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Länder", panelLänder);
@@ -328,7 +306,7 @@ public class MenyAdmin extends javax.swing.JFrame {
                 .addGroup(panelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPartnerHamtaUppgifter)
                     .addComponent(btnLaggTillPartner))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Partners", panelPartners);
@@ -379,168 +357,20 @@ public class MenyAdmin extends javax.swing.JFrame {
                 .addComponent(tfHamtaAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(btnHamtaAvdelningsInfo)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         menyAdminHuvudPanel.addTab("Avdelningar", panelAvdelningar);
-
-        lblLaggTillAnstalld.setText("Lägg till en ny anställd:");
-
-        lblFornamn.setText("Förnamn:");
-
-        lblEfternamn.setText("Efternamn:");
-
-        lblAdress.setText("Adress:");
-
-        lblEpost.setText("Epostadress:");
-
-        lblTelefon.setText("Telefon:");
-
-        tfFornamn.setText("jTextField1");
-
-        tfEfternamn.setText("jTextField2");
-
-        tfAdress.setText("jTextField3");
-
-        tfEpost.setText("jTextField4");
-
-        lblAnstDatum.setText("Anställningsdatum:");
-
-        lblAvdelning.setText("Avdelning:");
-
-        tfTelefon.setText("jTextField5");
-
-        tfAnstDatum.setText("jTextField6");
-
-        tfAvdelning.setText("jTextField7");
-
-        btnSpara.setText("Spara");
-        btnSpara.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSparaActionPerformed(evt);
-            }
-        });
-
-        lblTaBortAnstalld.setText("Ta bort en anställd:");
-
-        tfAngeAnstId.setText("Ange anställnings-ID");
-        tfAngeAnstId.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfAngeAnstIdFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfAngeAnstIdFocusLost(evt);
-            }
-        });
-
-        listaAnstalld.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        listaAnstalld.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                listaAnstalldFocusGained(evt);
-            }
-        });
-        jScrollPane5.setViewportView(listaAnstalld);
-
-        btnTaBort.setText("Ta bort");
 
         javax.swing.GroupLayout panelAnvandareLayout = new javax.swing.GroupLayout(panelAnvandare);
         panelAnvandare.setLayout(panelAnvandareLayout);
         panelAnvandareLayout.setHorizontalGroup(
             panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAnvandareLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAnvandareLayout.createSequentialGroup()
-                        .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblLaggTillAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelAnvandareLayout.createSequentialGroup()
-                                .addComponent(lblEpost)
-                                .addGap(18, 18, 18)
-                                .addComponent(tfEpost, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
-                            .addGroup(panelAnvandareLayout.createSequentialGroup()
-                                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFornamn)
-                                    .addComponent(lblEfternamn)
-                                    .addComponent(lblAdress))
-                                .addGap(27, 27, 27)
-                                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfFornamn, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                                    .addComponent(tfEfternamn)
-                                    .addComponent(tfAdress))))
-                        .addGap(32, 32, 32)
-                        .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelAnvandareLayout.createSequentialGroup()
-                                .addComponent(lblTelefon)
-                                .addGap(79, 79, 79)
-                                .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelAnvandareLayout.createSequentialGroup()
-                                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblAnstDatum)
-                                    .addComponent(lblAvdelning))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSpara)
-                                    .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfAnstDatum)
-                                        .addComponent(tfAvdelning))))))
-                    .addGroup(panelAnvandareLayout.createSequentialGroup()
-                        .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(panelAnvandareLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane5))
-                            .addComponent(lblTaBortAnstalld, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfAngeAnstId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTaBort))))
-                .addContainerGap(44, Short.MAX_VALUE))
+            .addGap(0, 502, Short.MAX_VALUE)
         );
         panelAnvandareLayout.setVerticalGroup(
             panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAnvandareLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblLaggTillAnstalld)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFornamn)
-                    .addComponent(tfFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelefon)
-                    .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEfternamn)
-                    .addComponent(tfEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAnstDatum)
-                    .addComponent(tfAnstDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAdress)
-                    .addComponent(tfAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAvdelning)
-                    .addComponent(tfAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEpost)
-                    .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSpara)))
-                .addGap(40, 40, 40)
-                .addComponent(lblTaBortAnstalld)
-                .addGroup(panelAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAnvandareLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfAngeAnstId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnTaBort)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAnvandareLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
+            .addGap(0, 356, Short.MAX_VALUE)
         );
 
         menyAdminHuvudPanel.addTab("Användare", panelAnvandare);
@@ -625,24 +455,6 @@ public class MenyAdmin extends javax.swing.JFrame {
             }  
          listaAvdelningar.setModel(overforingsLista);
         } catch (InfException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    public void listaAnstallda(){
-        
-        try{
-            ArrayList<String> allaAnstallda = idb.fetchColumn("SELECT concat(namn, ', Anstallnings-ID: ',aid) from anstalld");
-            DefaultListModel<String> overforingsLista = new DefaultListModel<>();
-            
-            for(String anstallda : allaAnstallda) {
-                overforingsLista.addElement(anstallda);
-                System.out.println(anstallda);
-            }
-            listaAnstalld.setModel(overforingsLista);
-            
-        }
-        catch (InfException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -800,32 +612,6 @@ public class MenyAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfHamtaAvdelningFocusLost
 
-    private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnSparaActionPerformed
-
-    private void listaAnstalldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listaAnstalldFocusGained
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_listaAnstalldFocusGained
-
-    private void tfAngeAnstIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfAngeAnstIdFocusGained
-        // TODO add your handling code here:
-        if (tfAngeAnstId.getText().equals("Ange anställning-ID")) {
-            tfAngeAnstId.setText("");
-            tfAngeAnstId.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_tfAngeAnstIdFocusGained
-
-    private void tfAngeAnstIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfAngeAnstIdFocusLost
-        // TODO add your handling code here:
-        if (tfAngeAnstId.getText().isEmpty()) {
-            tfAngeAnstId.setText("Ange anställning-ID");
-            tfAngeAnstId.setForeground(Color.GRAY);
-        }
-    }//GEN-LAST:event_tfAngeAnstIdFocusLost
-
     /**
      * @param args the command line arguments
      */
@@ -869,28 +655,15 @@ public class MenyAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnLandHamtaUppgifter;
     private javax.swing.JButton btnPartnerHamtaUppgifter;
     private javax.swing.JButton btnProjektHamtaUppgifter;
-    private javax.swing.JButton btnSpara;
-    private javax.swing.JButton btnTaBort;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lblAdress;
     private javax.swing.JLabel lblAllaLander;
     private javax.swing.JLabel lblAllaPartners;
     private javax.swing.JLabel lblAllaProjekt;
-    private javax.swing.JLabel lblAnstDatum;
-    private javax.swing.JLabel lblAvdelning;
-    private javax.swing.JLabel lblEfternamn;
-    private javax.swing.JLabel lblEpost;
-    private javax.swing.JLabel lblFornamn;
     private javax.swing.JLabel lblInloggadAnvandare;
-    private javax.swing.JLabel lblLaggTillAnstalld;
-    private javax.swing.JLabel lblTaBortAnstalld;
-    private javax.swing.JLabel lblTelefon;
-    private javax.swing.JList<String> listaAnstalld;
     private javax.swing.JList<String> listaAvdelningar;
     private javax.swing.JList<String> listaLander;
     private javax.swing.JList<String> listaPartners;
@@ -901,18 +674,10 @@ public class MenyAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel panelLänder;
     private javax.swing.JPanel panelPartners;
     private javax.swing.JPanel panelProjekt;
-    private javax.swing.JTextField tfAdress;
-    private javax.swing.JTextField tfAngeAnstId;
-    private javax.swing.JTextField tfAnstDatum;
-    private javax.swing.JTextField tfAvdelning;
-    private javax.swing.JTextField tfEfternamn;
-    private javax.swing.JTextField tfEpost;
-    private javax.swing.JTextField tfFornamn;
     private javax.swing.JTextField tfHamtaAvdelning;
     private javax.swing.JTextField tfLandID;
     private javax.swing.JTextField tfPartnerID;
     private javax.swing.JTextField tfProjektID;
-    private javax.swing.JTextField tfTelefon;
     // End of variables declaration//GEN-END:variables
 
 }
